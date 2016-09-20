@@ -1,10 +1,57 @@
 How to set up and use GitHub Forks - Branches - Pull Requests--
 Jordan & Sara should be familiar with this and be able to help their groups.
+We do not have to decide to do this, but it may make writing code easier.
 
-Step 1:
+Step 1:  Fork GitHub Repository
+		This can be done through the GitHub website, visit the MCLACS/CSCI452-Public
+		repository, and just click Fork in the upper right hand side of the screen.
 
-Step 2:
+		You may have to remove your original clone if you'd like this to be in the same folder
+		as your original CSCI452-Public repository.
 
-Step 3:
+		git clone "address of forked repository" in the directory you'd like the new repository to live.
 
-Step 4:
+Step 2:  Make New Branch
+		This is where you will work on your task, generally you name the branch with the Task Name, but
+		can also be named with a short description of what you're doing with the branch.
+
+		NOTE:  Before you do this, you should switch to your Master Branch on your fork
+			git checkout master
+
+		You will want to make sure that your branch you are about to make is up to date with the Master Project Repository.
+		You can do this by running the following command.
+			git pull upstream master
+
+		You can now create your new branch.
+			git checkout -b "Branch Name"
+
+		You view your branches:
+			git branch
+
+		If you are switching to a branch that already exists:
+			git checkout "Branch Name"
+
+Step 3:  Push Branch to GitHub
+		This is where you will submit your changes, and prepare to submit a pull request.
+
+		git add .
+			Can alternatively also add the files yourself rather than using "." for add all.
+		git commit -m "Commit Message"
+		git push origin "Branch Name"
+			This will push it to your Forked Repository
+
+Step 4:  Submit Pull Request
+		This is where you will request for your branch to be merged with the Master branch.  To do this, you visit
+		your Forked Repository.  There should be the branch you pushed up with the button to the right that says to
+		submit pull request.  Click that, it lets you review your changes, then you can click submit.
+
+		Now everyone can see your code and review it if we choose to do a review process.  There is also a way to see if
+		there will be any merge conflicts, so they can be resolved easier rather than running into a bunch of problems with
+		multiple groups trying to submit code.
+
+Step 5:  Merge Pull Request
+		This is easy to do, at the bottom of the pull request on GitHub there will be a merge button.  Click that and
+		the code will be merged into the Master Branch.
+
+Step 6:  Start New Task
+		Repeat steps 2-5.
