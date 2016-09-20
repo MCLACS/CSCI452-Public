@@ -11,7 +11,7 @@ Step 1:  Fork GitHub Repository
 
 		git clone "address of forked repository" in the directory you'd like the new repository to live.
 
-Step 3:  Setup Remote Repository
+Step 2:  Setup Remote Repository
 		This is where you will connect your Fork to the Master repository.  This will allow you to update
 		your Fork from the Master before making a new branch.
 			git checkout master
