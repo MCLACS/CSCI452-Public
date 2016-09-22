@@ -20,4 +20,4 @@ VALUES('A30048792', 'Maximillian', 'May', 'mm8792@mcla.edu', 'password');
 INSERT INTO users(a_number, f_name, l_name, email, password)
 VALUES('A20016137', 'Eric', 'Rogers', 'er6137@mcla.edu', 'password');
 
-SELECT *  FROM users;
+SELECT * FROM users;
