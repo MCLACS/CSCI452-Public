@@ -1,20 +1,49 @@
 <?php
-  require_once 'login_db.php';
-  $conn = new mysqli($db_hostname, $db_username, $db_password, $db_database);
-  if ($conn->connect_error)
+  session_start();
+
+  require_once "functions.php";
+  require_once "db_login.php";
+
+  error_reporting(E_ALL);
+  ini_set('display_errors', 1);
+  header('Access-Control-Allow-Origin: *');
+  header('Content-type: application/json');
+
+  $mysqli = new mysqli($db_hostname,$db_username,$db_password,$db_database);
+  if ($mysqli->connect_error)
   {
-      die("Connection failed: " . $conn->connect_error);
+    die("Connection failed: " . $mysqli->connect_error);
   }
 
-  echo "php called";
+  $cmd = getValue("cmd");
 
-  if($_SERVER["REQUEST_METHOD"] == "POST") {
-    // username and password sent from form
-    $id = $_POST['id'];
-    $password = $_POST['password'];
-
-    $sql = "SELECT id FROM users WHERE id = '$id' and password = '$password'";
-    $result = mysqli_query($sql);
-    echo $result;
+  if ($cmd == "login")
+  {
+    $a_number = getValue('a_number');
+    $a_number = mysqli_real_escape_string($mysqli,$a_number);
+    $password = getValue('password');
+    $password = mysqli_real_escape_string($mysqli,$password);
+    $response = login($a_number, $password);
+    echo json_encode($response);
   }
+  else
+  {
+      echo json_encode("Please specify a value for cmd. Command supported: login");
+  }
+
+  function login($a_number, $password)
+  {
+      global $mysqli;
+      $response = array();
+      $query = "SELECT f_name, l_name FROM users WHERE a_number= '$a_number' AND password= '$password'";
+      $res = $mysqli->query($query) or die(mysqli_error($mysqli));
+      while($row = $res->fetch_assoc())
+      {
+          $response[] = $row;
+      }
+      return $response;
+  }
+
+
+  $mysqli->close();
 ?>
