@@ -18,16 +18,11 @@ function login() {
       console.log("ajax request failed..");
     }
   });
-  
-}
-
-function createUser() {
 
 }
 
 function init() {
   $('#login-button').click(login);
-  $('#create-user-button').click(createUser);
 };
 
 $(document).ready(init);
