@@ -31,14 +31,14 @@
             <input type="password" class="form-control loginHide password" id="password" placeholder="Password" name="password">
             <input type="checkbox" class="remember-me loginHide"> <span class="loginHide">Remember me</span>
             <div class="welcome" hidden="true">
-                Welcome, <span class="name" id="name"></span>
+              Welcome, <span class="name" id="name"></span>
+              <button type="button logout" id="logout-button" class="btn btn-warning welcome" value="logout">Logout</button>
             </div>
           </div>
 
           </div>
           <div class="col-md-2">
             <button type="button login" id="login-button" class="btn btn-primary loginHide" value="login">Login</button>
-            <button type="button logout" id="logout-button" class="btn btn-warning welcome" value="logout">Logout</button>
           </div>
           <div class="col-md-1"></div>
         </div>
@@ -53,48 +53,48 @@
           <div class="content">
             <h2 class="heading">Degree Me!</h2>
             <p><h4 class="heading">Degree Me is a website designed to help MCLA Computer Science students to access the classes needed to graduate with a Bachelor's of Science in
-              any concentration offered at the college. Users will be able to edit and view classes they have taken, view prerequisites for courses, and view classes that need to
-              be taken. Imagine if MCLA Banner was more useful and looked nicer.  Users will enter the classes they've already taken upon creating an account, and updating will be
-              quick and simple. Click the button below to sign up now.</h4></p>
-              <div class="create-account-button">
-                <p><center><a href="createAccount.html"><button type="button" class="btn btn-warning btn-lg create">Create Account</button></a></center>
-              </div>
-              <div class="better">
-                <!--<p><i>"It's <b>better</b> than
-                <p class="text-right"><b>Banner!"</b></i>-->
-                <center><img class="better" src="Images/Slogan.jpg" alt="" /></center>
-              </div>
+            any concentration offered at the college. Users will be able to edit and view classes they have taken, view prerequisites for courses, and view classes that need to
+            be taken. Imagine if MCLA Banner was more useful and looked nicer.  Users will enter the classes they've already taken upon creating an account, and updating will be
+            quick and simple. Click the button below to sign up now.</h4></p>
+            <div class="create-account-button" id="create-button">
+              <p><center><a href="createAccount.html"><button type="button" class="btn btn-warning btn-lg create">Create Account</button></a></center>
+            </div>
+            <div class="better">
+              <!--<p><i>"It's <b>better</b> than
+              <p class="text-right"><b>Banner!"</b></i>-->
+              <center><img class="better" src="Images/Slogan.jpg" alt="" /></center>
+            </div>
 
-              <h2  class="heading">About the Department</h2>
-              <h7>
-                <p>The Department of Computer Science offers a four-year program leading to a Bachelor of Science in Computer Science. Students majoring in computer science will
-                choose to focus their studies in one of four areas of concentration: software development, information technology, business information systems, and bioinformatics.</p>
+            <h2  class="heading">About the Department</h2>
+            <h7>
+              <p>The Department of Computer Science offers a four-year program leading to a Bachelor of Science in Computer Science. Students majoring in computer science will
+              choose to focus their studies in one of four areas of concentration: software development, information technology, business information systems, and bioinformatics.</p>
 
-                <p><strong>The Software Development Concentration</strong> prepares students for careers as software developers or for graduate study in computer science.
-                This concentration consists of a solid core of computer science theory as well as several courses in computer programming utilizing a wide variety of
-                programming languages. For a detailed list of this program's requirements consult the Software Development Concentration Checklist.</p>
+              <p><strong>The Software Development Concentration</strong> prepares students for careers as software developers or for graduate study in computer science.
+              This concentration consists of a solid core of computer science theory as well as several courses in computer programming utilizing a wide variety of
+              programming languages. For a detailed list of this program's requirements consult the Software Development Concentration Checklist.</p>
 
-                <p><strong>The Information Technology Concentration</strong> prepares students for a variety of careers in computing including information security,
-                networking, system and database administration, and business application development. This concentration consists of courses in security, networking,
-                database, hardware, and computer programming. For a detailed list of this program's requirements consult the Information Technology Concentration Checklist.</p>
+              <p><strong>The Information Technology Concentration</strong> prepares students for a variety of careers in computing including information security,
+              networking, system and database administration, and business application development. This concentration consists of courses in security, networking,
+              database, hardware, and computer programming. For a detailed list of this program's requirements consult the Information Technology Concentration Checklist.</p>
 
-                <p><strong>The Business Information Systems Concentration</strong> is an interdisciplinary concentration that prepares students for a career in
-                information systems management or technology entrepreneurship. This concentration consists of courses in information systems, systems analysis,
-                database, business application development, accounting, and management. For a detailed list of this program's requirements consult the Business
-                Information Systems Concentration Checklist.</p>
+              <p><strong>The Business Information Systems Concentration</strong> is an interdisciplinary concentration that prepares students for a career in
+              information systems management or technology entrepreneurship. This concentration consists of courses in information systems, systems analysis,
+              database, business application development, accounting, and management. For a detailed list of this program's requirements consult the Business
+              Information Systems Concentration Checklist.</p>
 
-                <p><strong>The Bioinformatics Concentration</strong> is an interdisciplinary concentration that prepares students for careers in bioinformatics and
-                data science, or for graduate study in these areas. This concentration consists of courses in biology, database, parallel computing, algorithms,
-                and computer programming. For a detailed list of this program's requirements consult the Bioinformatics Concentration Checklist.</p>
+              <p><strong>The Bioinformatics Concentration</strong> is an interdisciplinary concentration that prepares students for careers in bioinformatics and
+              data science, or for graduate study in these areas. This concentration consists of courses in biology, database, parallel computing, algorithms,
+              and computer programming. For a detailed list of this program's requirements consult the Bioinformatics Concentration Checklist.</p>
 
-                <p>Student learning outcomes for all four concentrations, as well as all academic programs at MCLA, can be found here.</p>
-              </h7>
+              <p>Student learning outcomes for all four concentrations, as well as all academic programs at MCLA, can be found here.</p>
+            </h7>
 
-              <h2  class="heading">Meet Your Professors!</h2>
-              <img class="pic" src="Images/mike.png" title="Fabulous" />
-              <img class="pic" src="Images/markcohen.png" title="Magical Unicorn" />
-              <img class="pic" src="Images/johnridgway.jpg" title="Newbie" />
-              <img class="pic" src="Images/dave.png" title="He's not ALL Business" />
+            <h2  class="heading">Meet Your Professors!</h2>
+            <img class="pic" src="Images/mike.png" title="Fabulous" />
+            <img class="pic" src="Images/markcohen.png" title="Magical Unicorn" />
+            <img class="pic" src="Images/johnridgway.jpg" title="Newbie" />
+            <img class="pic" src="Images/dave.png" title="He's not ALL Business" />
           </div>
         </div>
 
