@@ -23,14 +23,22 @@
         </div>
         <div class="col-md-3"></div>
         <div class="login">
-          <div class="col-md-2">
-            <input type="aNumber" class="form-control" id="aNumber" placeholder="A Number" name="aNumber">
+          <div class="col-md-2 form-inline">
+            <input type="aNumber" class="form-control loginHide" id="aNumber" placeholder="A Number" name="aNumber">
+            <span class="loginHide">(e.g. a12345678)</span>
           </div>
           <div class="col-md-2">
-            <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+            <input type="password" class="form-control loginHide password" id="password" placeholder="Password" name="password">
+            <input type="checkbox" class="remember-me loginHide"> <span class="loginHide">Remember me</span>
+            <div class="welcome">
+                Welcome, <span class="name" id="name">Kyle Jensen</span>
+            </div>
           </div>
-          <div class="col-md-1">
-            <button type="button login" id="login-button" class="btn btn-primary" value="login">Login</button>
+
+          </div>
+          <div class="col-md-2">
+            <button type="button login" id="login-button" class="btn btn-primary loginHide" value="login" onclick="checkPass()">Login</button>
+            <button type="button logout" id="login-button" class="btn btn-warning welcome" value="login">Logout</button>
           </div>
           <div class="col-md-1"></div>
         </div>
@@ -105,5 +113,27 @@
         <div class="col-md-1"></div>
       </div>
     </div>
+
+    <script>
+        $(".loginHide").show();
+        $(".welcome").hide();
+
+        function checkPass(){
+
+            //Function to check password, if wrong then run this code
+            //if(wrongPass)
+            //{
+                document.getElementById("password").style.border = "2px #FF0000 solid";
+                document.getElementById("password").value="";
+                $(".password").attr("placeholder", "Incorrect Password");
+            //}
+            //else
+            //{
+                $(".loginHide").hide();
+                $(".welcome").show();
+            //}
+        }
+    </script>
+
   </body>
 </html>
