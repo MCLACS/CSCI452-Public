@@ -30,15 +30,15 @@
           <div class="col-md-2">
             <input type="password" class="form-control loginHide password" id="password" placeholder="Password" name="password">
             <input type="checkbox" class="remember-me loginHide"> <span class="loginHide">Remember me</span>
-            <div class="welcome">
-                Welcome, <span class="name" id="name">Kyle Jensen</span>
+            <div class="welcome" hidden="true">
+                Welcome, <span class="name" id="name"></span>
             </div>
           </div>
 
           </div>
           <div class="col-md-2">
-            <button type="button login" id="login-button" class="btn btn-primary loginHide" value="login" onclick="checkPass()">Login</button>
-            <button type="button logout" id="login-button" class="btn btn-warning welcome" value="login">Logout</button>
+            <button type="button login" id="login-button" class="btn btn-primary loginHide" value="login">Login</button>
+            <button type="button logout" id="logout-button" class="btn btn-warning welcome" value="logout">Logout</button>
           </div>
           <div class="col-md-1"></div>
         </div>
@@ -52,9 +52,12 @@
         <div class="col-md-7">
           <div class="content">
             <h2 class="heading">Degree Me!</h2>
-            <p><h4 class="heading">Degree Me is a website designed to help MCLA Computer Science students to access the classes needed to graduate with a Bachelor's of Science in any concentration offered at the college. Users will be able to edit and view classes they have taken, view prerequisites for courses, and view classes that need to be taken. Imagine if MCLA Banner was more useful and looked nicer.  Users will enter the classes they've already taken upon creating an account, and updating will be quick and simple. Click the button below to sign up now.</h4>
+            <p><h4 class="heading">Degree Me is a website designed to help MCLA Computer Science students to access the classes needed to graduate with a Bachelor's of Science in
+              any concentration offered at the college. Users will be able to edit and view classes they have taken, view prerequisites for courses, and view classes that need to
+              be taken. Imagine if MCLA Banner was more useful and looked nicer.  Users will enter the classes they've already taken upon creating an account, and updating will be
+              quick and simple. Click the button below to sign up now.</h4></p>
               <div class="create-account-button">
-                <p><center><button type="button" class="btn btn-warning btn-lg create">Create Account</button></center>
+                <p><center><a href="createAccount.html"><button type="button" class="btn btn-warning btn-lg create">Create Account</button></a></center>
               </div>
               <div class="better">
                 <!--<p><i>"It's <b>better</b> than
@@ -113,27 +116,5 @@
         <div class="col-md-1"></div>
       </div>
     </div>
-
-    <script>
-        $(".loginHide").show();
-        $(".welcome").hide();
-
-        function checkPass(){
-
-            //Function to check password, if wrong then run this code
-            //if(wrongPass)
-            //{
-                document.getElementById("password").style.border = "2px #FF0000 solid";
-                document.getElementById("password").value="";
-                $(".password").attr("placeholder", "Incorrect Password");
-            //}
-            //else
-            //{
-                $(".loginHide").hide();
-                $(".welcome").show();
-            //}
-        }
-    </script>
-
   </body>
 </html>

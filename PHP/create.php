@@ -1,24 +1,51 @@
 <?php
-   include("config.php");
-   session_start();
+  session_start();
 
-   if($_SERVER["REQUEST_METHOD"] == "POST") {
-      // username and password sent from form
-      $id = mysqli_real_escape_string($db,$_POST['username']);
-      $password = mysqli_real_escape_string($db,$_POST['password']);
+  require_once "functions.php";
+  require_once "db_login.php";
 
-      $sql = "SELECT id FROM users WHERE username = '$id' and passcode = '$password'";
-      $result = mysqli_query($db, $sql);
-      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-      $active = $row['active'];
-      $count = mysqli_num_rows($result);
+  error_reporting(E_ALL);
+  ini_set('display_errors', 1);
+  header('Access-Control-Allow-Origin: *');
+  header('Content-type: application/json');
 
-      // If result matched $myusername and $mypassword, table row must be 1 row
-      if($count == 0) {
-         $createUser = "INSERT INTO users VALUES($id, $f_name, $l_name, $email, $password)";
-         mysqli($db, $createUser);
-      } else {
-         $error = "That username already exists";
-      }
-   }
+  $mysqli = new mysqli($db_hostname,$db_username,$db_password,$db_database);
+  if ($mysqli->connect_error)
+  {
+    die("Connection failed: " . $mysqli->connect_error);
+  }
+
+  $cmd = getValue("cmd");
+
+  if ($cmd == "create")
+  {
+    $a_number = getValue('a_number');
+    $a_number = mysqli_real_escape_string($mysqli,$a_number);
+    $password = getValue('password');
+    $password = mysqli_real_escape_string($mysqli,$password);
+    $f_name = getValue('f_name');
+    $f_name = mysqli_real_escape_string($mysqli,$f_name);
+    $l_name = getValue('l_name');
+    $l_name = mysqli_real_escape_string($mysqli,$l_name);
+    $email = getValue('email');
+    $email = mysqli_real_escape_string($mysqli,$email);
+    $response = create($a_number, $password, $f_name, $l_name, $email);
+    echo json_encode($response);
+  }
+  else
+  {
+      echo json_encode("Please specify a value for cmd. Command supported: login");
+  }
+
+  function create($a_number, $password, $f_name, $l_name, $email)
+  {
+      global $mysqli;
+      $response = array();
+      $query = "INSERT INTO users (a_number, f_name, l_name, email, password) VALUES ('$a_number', '$f_name', '$l_name', '$email', '$password')";
+      $res = $mysqli->query($query) or die(mysqli_error($mysqli));
+
+      return true;
+  }
+
+  $mysqli->close();
 ?>

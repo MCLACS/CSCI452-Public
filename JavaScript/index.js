@@ -1,5 +1,6 @@
 function login() {
-
+console.log($('#aNumber').val());
+console.log($('#password').val());
   $.ajax({
     url: 'http://localhost/CSCI452-Public/PHP/login.php?cmd=login',
     type: 'GET',
@@ -8,10 +9,13 @@ function login() {
       'a_number': $('#aNumber').val(),
       'password': $('#password').val() },
     success: function(json){
-      if(json.length != 0)
-        console.log(json[0].f_name + " " + json[0].l_name + " login successful");
+      if(json.length != 0) {
+        $('#name').append(json[0].f_name + " " + json[0].l_name);
+        $('.welcome').show();
+        $('.loginHide').hide();
+      }
       else {
-        console.log("Incorrect ANumber or Password");
+        $('#password').val("");
       }
     },
     error:  function() {
@@ -21,8 +25,15 @@ function login() {
 
 }
 
+function logout() {
+  $('.welcome').hide();
+  $('.loginHide').show();
+  $('#name').empty();
+}
+
 function init() {
   $('#login-button').click(login);
+  $('#logout-button').click(logout);
 };
 
 $(document).ready(init);
