@@ -4,6 +4,7 @@ body{
     margin: 0;
     background-color: #CCCCCC;
 }
+
 .row{
     margin: 0;
     padding: 0;
@@ -21,11 +22,16 @@ body{
     font-size: 1.3em;
     position: fixed;
 }
+
 .logo{
     width: 70%;
     height: auto;
 }
+
 .login{
+}
+
+.form-control text :required{
 }
 
 .better{
@@ -39,23 +45,28 @@ body{
     padding-top: 6%;
     width: auto;
 }
+
 .content{
     margin: 0;
     padding: 2% 3% 3% 3%;
     background-color: #FFFFFF;
     width: 100%;
 }
+
 .create{
     text-align: center;
 }
+
 .create-account-button{
     width: 100%;
     background-color: #001C8C;
     padding: 2% 0 3% 0;
 }
+
 .heading{
     color: #001C8C;
 }
+
 .links{
     background-color: #F1BC00;
     color: #000000;
@@ -67,9 +78,11 @@ body{
     width: 500px;
     height: auto;
 }
+
 .pictures{
     background-color: #FFFFFF;
 }
+
 .pic{
     height: 182px;
     width: auto;

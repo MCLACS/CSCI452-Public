@@ -26,24 +26,43 @@
     $response = login($a_number, $password);
     echo json_encode($response);
   }
+  elseif ($cmd == "checkLogin") {
+    $response = checkLogin();
+    echo json_encode($response);
+  }
+  elseif ($cmd == "logout") {
+    $response = logout();
+    echo json_encode($response);
+  }
   else
   {
-      echo json_encode("Please specify a value for cmd. Command supported: login");
+    echo json_encode("Please specify a value for cmd. Command supported: login");
   }
 
   function login($a_number, $password)
   {
-      global $mysqli;
-      $response = array();
-      $query = "SELECT f_name, l_name FROM users WHERE a_number= '$a_number' AND password= '$password'";
-      $res = $mysqli->query($query) or die(mysqli_error($mysqli));
-      while($row = $res->fetch_assoc())
-      {
-          $response[] = $row;
-      }
-      return $response;
+    $user = getSessionValue("user", array());
+    global $mysqli;
+    $response = array();
+    $query = "SELECT id, f_name, l_name FROM users WHERE a_number= '$a_number' AND password= '$password'";
+    $res = $mysqli->query($query) or die(mysqli_error($mysqli));
+    while($row = $res->fetch_assoc())
+    {
+        $response[] = $row;
+    }
+    setSessionValue("user", $response);
+    return $response;
   }
 
+  function checkLogin() {
+    $user = getSessionValue("user", array());
+    return $user;
+  }
+
+  function logout() {
+    setSessionValue("user", array());
+    $response = getSessionValue("user", array());
+  }
 
   $mysqli->close();
 ?>

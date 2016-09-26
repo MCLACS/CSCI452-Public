@@ -1,6 +1,5 @@
 function create() {
   if($('#password').val() == $('#confirmPassword').val()) {
-    console.log("ajax");
     $.ajax({
       url: 'http://localhost/CSCI452-Public/PHP/create.php?cmd=create',
       type: 'GET',
