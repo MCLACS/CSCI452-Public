@@ -1,0 +1,41 @@
+/*GENERAL STYLING*/
+body{
+    width: auto;
+    margin: 0;
+    background-color: #CCCCCC;
+}
+
+.row{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/*HEADER*/
+.jumbotron{
+    z-index: 5;
+    margin: 0;
+    width: 100%;
+    padding: 1% 0 1% 0;
+    background-color: #001C8C;
+    color: #F1BC00;
+    font-size: 1.3em;
+    position: fixed;
+}
+
+.logo{
+    width: 70%;
+    height: auto;
+}
+
+.container{
+    padding-top: 6%;
+    width: auto;
+}
+
+.links{
+    background-color: #F1BC00;
+    color: #000000;
+    margin: 0;
+    padding-top: 1%
+}

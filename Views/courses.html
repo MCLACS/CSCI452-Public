@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Degree-Me!</title>
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="../JavaScript/index.js"></script>
+    <link rel="stylesheet" type="text/css" href="CSS/courses.css">
+  </head>
+  <body>
+    <div class="jumbotron">
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-2">
+          <img alt="Computer Science Logo" class="logo" src="Images/mcla-logo.png"> Computer Science
+        </div>
+        <div class="col-md-5"></div>
+        <div class="col-md-3">
+          <div class="welcome">
+            Welcome, <span class="name" id="name"></span>
+            <button type="button" id="logout-button" class="btn btn-warning welcome" value="logout">Logout</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <table>
+            <tr>
+              <th>Course Number</th>
+              <th>Name</th>
+              <th>Concentrations</th>
+            </tr>
+            <tbody>
+              <tr>
+                <td>CSCI-452</td>
+                <td>Software Engineering</td>
+                <td>Software Development</td>
+              </tr>
+              <tr>
+                <td>CSCI-101</td>
+                <td>Intro to Computer Science</td>
+                <td>Software Development, Information Technology, Bioinformatics</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="col-md-4 links">
+          <h2>Links</h2>
+          <ul>
+            <li><a href="https://mcla.edu/Assets/MCLA-Files/Programs/ComputerScience/software-checklist.pdf">PDF of Required Courses</a></li>
+            <li>Current Catalogue</li>
+            <li>Single Sign On (SSO)</li>
+            <li>The Lesser One (Banner)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
