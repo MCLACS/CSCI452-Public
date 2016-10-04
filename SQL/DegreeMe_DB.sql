@@ -52,7 +52,7 @@ CREATE TABLE course_conc
 	FOREIGN KEY(course_id) REFERENCES courses(course_id),
 	FOREIGN KEY(conc_id) REFERENCES concentrations(conc_id)
 );
-​
+
 CREATE TABLE prerequisites
 (
 	course_id int NOT NULL,
@@ -70,6 +70,8 @@ CREATE TABLE user_courses
 	FOREIGN KEY(user_id) REFERENCES users(user_id),
 	FOREIGN KEY(course_id) REFERENCES courses(course_id)
 );
+
+DESC users;
 
 INSERT INTO roles VALUES(NULL, 'Admin');
 
@@ -105,3 +107,6 @@ INSERT INTO course_conc VALUES (6, 2);
 INSERT INTO prerequisites VALUES (4, 1);
 INSERT INTO prerequisites VALUES (6, 3);
 INSERT INTO prerequisites VALUES (5, 4);
+
+
+SELECT * FROM users;
