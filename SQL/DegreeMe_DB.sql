@@ -17,7 +17,7 @@ CREATE TABLE users
 	l_name varchar(25) NOT NULL,
 	email varchar(50) NOT NULL UNIQUE,
 	password varchar(25) NOT NULL,
-	role_id int NOT NULL,
+	role_id int,
 	FOREIGN KEY (role_id) REFERENCES roles(role_id)
 );
 
