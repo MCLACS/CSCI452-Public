@@ -32,7 +32,7 @@
     $user = getSessionValue("courses", array());
     global $mysqli;
     $response = array();
-    $query = "SELECT course_number, course_name FROM courses";
+    $query = 'SELECT course_number, course_name, prereq_id FROM courses LEFT JOIN prerequisites ON courses.course_id = prerequisites.course_id ORDER BY course_number;';
     $res = $mysqli->query($query) or die(mysqli_error($mysqli));
     while($row = $res->fetch_assoc())
     {

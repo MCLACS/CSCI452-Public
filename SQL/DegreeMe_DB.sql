@@ -90,7 +90,7 @@ INSERT INTO courses VALUES (NULL, 'Programming in Java I', 'CSCI-121', 3);
 INSERT INTO courses VALUES (NULL, 'Network Theory & Administration I', 'CSCI-210', 3);
 INSERT INTO courses VALUES (NULL, 'Introduction to Computer Science', 'CSCI-101', 3);
 INSERT INTO courses VALUES (NULL, 'Programming in Java II', 'CSCI-122', 3);
-INSERT INTO courses VALUES (NULL, 'Data Structures & Algorithms', 'CSCI-122', 3);
+INSERT INTO courses VALUES (NULL, 'Data Structures & Algorithms', 'CSCI-361', 3);
 INSERT INTO courses VALUES (NULL, 'Computer Triage', 'CSCI-302', 3);
 
 INSERT INTO course_conc VALUES (1, 1);
