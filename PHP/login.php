@@ -44,7 +44,7 @@
     $user = getSessionValue("user", array());
     global $mysqli;
     $response = array();
-    $query = "SELECT id, f_name, l_name FROM users WHERE a_number= '$a_number' AND password= '$password'";
+    $query = "SELECT user_id, f_name, l_name, password, email FROM users WHERE a_number= '$a_number' AND password= '$password'";
     $res = $mysqli->query($query) or die(mysqli_error($mysqli));
     while($row = $res->fetch_assoc())
     {

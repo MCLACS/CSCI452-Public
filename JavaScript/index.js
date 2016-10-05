@@ -12,6 +12,7 @@ function login() {
         $('#name').append(json[0].f_name + " " + json[0].l_name);
         $('.welcome').show();
         $('.loginHide').hide();
+        $('#edit-button').show();
       }
       else {
         $('#password').val("");
@@ -36,6 +37,7 @@ function logout() {
       $('.loginHide').show();
       $('#name').empty();
       $('#password').val("");
+      $('#edit-account').hide();
     },
     error:  function() {
       console.log("ajax request failed..");
@@ -65,10 +67,15 @@ function checkLogin() {
 
 }
 
+function edit(){
+  window.location.assign('http://localhost/CSCI452-Public/Views/editAccount.html');
+}
+
 function init() {
   checkLogin();
   $('#login-button').click(login);
   $('#logout-button').click(logout);
+  $('#edit-button').click(edit);
 };
 
 $(document).ready(init);

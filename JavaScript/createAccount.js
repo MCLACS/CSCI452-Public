@@ -15,8 +15,8 @@ function create() {
         window.location.assign('http://localhost/CSCI452-Public/Views/index.html');
         console.log("success");
       },
-      error:  function() {
-        console.log("ajax request failed..");
+      error:  function(request, status, error) {
+        alert(request.responseText);
         $('#confirmPassword').val("");
       }
     });
@@ -28,6 +28,6 @@ function create() {
 
 function init() {
   $('#submit-button').click(create);
-};
+}
 
 $(document).ready(init);
