@@ -13,7 +13,7 @@ function loadCourses() {
 	        columns: [
 	            { data: 'course_number'},
 	            { data: 'course_name' },
-	            { data: 'prereq_id' },
+	            { data: 'prerequisite' },
 	            { data: 'concentration' }
 	        ],
 		    });

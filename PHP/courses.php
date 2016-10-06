@@ -32,7 +32,7 @@
     $user = getSessionValue("courses", array());
     global $mysqli;
     $response = array();
-    $query = 'SELECT course_number, course_name, prereq_id FROM courses LEFT JOIN prerequisites ON courses.course_id = prerequisites.course_id ORDER BY course_number;';
+    $query = 'SELECT c1.course_number, c1.course_name, c2.course_name AS prerequisite, con.conc_name AS concentration FROM courses c1 LEFT OUTER JOIN prerequisites pr on (pr.course_id = c1.course_id) LEFT OUTER JOIN courses c2 on (pr.prereq_id = c2.course_id) LEFT OUTER JOIN course_conc cc on (cc.course_id = c1.course_id) LEFT OUTER JOIN concentrations con on (cc.conc_id = con.conc_id);';
     $res = $mysqli->query($query) or die(mysqli_error($mysqli));
     while($row = $res->fetch_assoc())
     {
