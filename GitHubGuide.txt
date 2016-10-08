@@ -61,3 +61,5 @@ Step 6:  Merge Pull Request
 
 Step 7:  Start New Task
 		Repeat steps 3-6.
+
+Done.
