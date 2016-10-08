@@ -45,3 +45,11 @@ body{
     background-color: #FFFFFF;
     width: 100%;
 }
+
+.dropdown {
+  float: right;
+}
+
+#course_table_filter {
+    float: left;
+}

@@ -8,13 +8,13 @@
     <title>Courses</title>
 
     <!--  Bootstrap -->
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!--  JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!--  JQuery DataTables -->
     <script src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.4/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.4/css/jquery.dataTables.min.css">
     <!--  View JS & CSS -->
     <script type="text/javascript" src="../JavaScript/courses.js"></script>
     <link rel="stylesheet" type="text/css" href="CSS/courses.css">
@@ -41,7 +41,16 @@
           <div class="col-md-1"></div>
           <div class="col-md-7">
             <div class= "content">
-             <table id="course_table" class="table">
+              <div class="dropdown">
+                <select id="dropMenu" class="form-control">
+                  <option value="All">Select Concentration</option>
+                  <option value="Bioinformatics">Bioinformatics</option>
+                  <option value="Business Information Systems">Business Information Systems</option>
+                  <option value="Information Technology">Information Technology</option>
+                  <option value="Software Development">Software Development</option>
+                </select>
+              </div>
+              <table id="course_table">
                <thead>
                  <tr>
                    <th>Course Number</th>
@@ -49,7 +58,7 @@
                    <th>Prerequisites</th>
                    <th>Concentrations</th>
                  </tr>
-              </thead>
+               </thead>
                <tfoot>
                  <tr>
                    <th>Course Number</th>
