@@ -107,6 +107,9 @@ INSERT INTO course_conc VALUES (6, 2);
 INSERT INTO prerequisites VALUES (4, 1);
 INSERT INTO prerequisites VALUES (6, 3);
 INSERT INTO prerequisites VALUES (5, 4);
+INSERT INTO prerequisites VALUES (5, 1);
+INSERT INTO prerequisites VALUES (5, 3);
+
 
 
 SELECT * FROM users;

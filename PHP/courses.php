@@ -19,8 +19,11 @@
 
   if ($cmd == "loadAll")
   {
+    $user = getSessionValue("user", array());
     $response = loadAll();
+    $response[] = $user[0];
     echo json_encode($response);
+
   }
   else
   {
@@ -38,6 +41,7 @@
     {
         $response[] = $row;
     }
+
     setSessionValue("courses", $response);
     return $response;
   }

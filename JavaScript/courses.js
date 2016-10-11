@@ -1,3 +1,4 @@
+var user;
 var courses;
 var table;
 
@@ -9,10 +10,12 @@ function loadCourses() {
     contenttype: "application/json",
     data: {},
     success: function(json){
+      user = json.pop();
+      $('#name').append(user.f_name + " " + user.l_name);
       courses = json;
       table = $('#course_table').DataTable( {
         paging: false,
-        data: json,
+        data: courses,
         columns: [
           { data: 'course_number'},
           { data: 'course_name' },
@@ -34,7 +37,7 @@ function filter(){
   }
   else {
     var filteredCourses = new Array();
-    for(var i=0;i<courses.length;i++)
+    for(var i = 0; i < courses.length; i++)
     {
       if(courses[i].concentration == val)
       {
