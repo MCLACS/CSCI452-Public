@@ -19,13 +19,13 @@
 
   if ($cmd == "create")
   {
-    $a_number = getValue('a_number');
+    $a_number = getValue('aNumber');
     $a_number = mysqli_real_escape_string($mysqli,$a_number);
     $password = getValue('password');
     $password = mysqli_real_escape_string($mysqli,$password);
-    $f_name = getValue('f_name');
+    $f_name = getValue('firstName');
     $f_name = mysqli_real_escape_string($mysqli,$f_name);
-    $l_name = getValue('l_name');
+    $l_name = getValue('lastName');
     $l_name = mysqli_real_escape_string($mysqli,$l_name);
     $email = getValue('email');
     $email = mysqli_real_escape_string($mysqli,$email);
