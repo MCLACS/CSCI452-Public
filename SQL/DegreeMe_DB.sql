@@ -18,7 +18,7 @@ CREATE TABLE users
 	email varchar(50) NOT NULL UNIQUE,
 	password varchar(25) NOT NULL,
 	role_id int,
-	FOREIGN KEY (role_id) REFERENCES roles(role_id)
+	FOREIGN KEY (role_id) REFERENCES roles(role_id) ON DELETE CASCADE
 );
 
 CREATE TABLE concentrations

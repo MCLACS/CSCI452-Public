@@ -13,6 +13,7 @@ function login() {
         $('.welcome').show();
         $('.loginHide').hide();
         $('#edit-button').show();
+        $('#create-button').hide();
       }
       else {
         $('#password').val("");
@@ -38,6 +39,7 @@ function logout() {
       $('#name').empty();
       $('#password').val("");
       $('#edit-account').hide();
+      $('#create-button').show();
     },
     error:  function() {
       console.log("ajax request failed..");
