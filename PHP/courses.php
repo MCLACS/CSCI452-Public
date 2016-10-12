@@ -21,6 +21,8 @@
   {
     $user = getSessionValue("user", array());
     $response = loadAll();
+    if(empty($user[0]))
+      $user[0] = array('f_name' => "Guest", 'l_name' => "");
     $response[] = $user[0];
     echo json_encode($response);
 
