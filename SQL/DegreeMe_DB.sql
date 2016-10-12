@@ -32,8 +32,8 @@ CREATE TABLE user_conc
 	user_id int NOT NULL,
 	conc_id int NOT NULL,
 	PRIMARY KEY(user_id, conc_id),
-	FOREIGN KEY(user_id) REFERENCES users(user_id),
-	FOREIGN KEY(conc_id) REFERENCES concentrations(conc_id)
+	FOREIGN KEY(user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+	FOREIGN KEY(conc_id) REFERENCES concentrations(conc_id) ON DELETE CASCADE
 );
 
 CREATE TABLE courses
@@ -49,8 +49,8 @@ CREATE TABLE course_conc
 	course_id int NOT NULL,
 	conc_id int NOT NULL,
 	PRIMARY KEY(course_id, conc_id),
-	FOREIGN KEY(course_id) REFERENCES courses(course_id),
-	FOREIGN KEY(conc_id) REFERENCES concentrations(conc_id)
+	FOREIGN KEY(course_id) REFERENCES courses(course_id) ON DELETE CASCADE,
+	FOREIGN KEY(conc_id) REFERENCES concentrations(conc_id) ON DELETE CASCADE
 );
 
 CREATE TABLE prerequisites
@@ -58,8 +58,8 @@ CREATE TABLE prerequisites
 	course_id int NOT NULL,
 	prereq_id int NOT NULL,
 	PRIMARY KEY(course_id, prereq_id),
-	FOREIGN KEY(course_id) REFERENCES courses(course_id),
-	FOREIGN KEY(prereq_id) REFERENCES courses(course_id)
+	FOREIGN KEY(course_id) REFERENCES courses(course_id) ON DELETE CASCADE,
+	FOREIGN KEY(prereq_id) REFERENCES courses(course_id) ON DELETE CASCADE
 );
 
 CREATE TABLE user_courses
@@ -67,8 +67,8 @@ CREATE TABLE user_courses
 	user_id int NOT NULL,
 	course_id int NOT NULL,
 	PRIMARY KEY(user_id, course_id),
-	FOREIGN KEY(user_id) REFERENCES users(user_id),
-	FOREIGN KEY(course_id) REFERENCES courses(course_id)
+	FOREIGN KEY(user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+	FOREIGN KEY(course_id) REFERENCES courses(course_id) ON DELETE CASCADE
 );
 
 DESC users;
