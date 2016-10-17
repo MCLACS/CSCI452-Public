@@ -39,7 +39,7 @@ function filter(){
     var filteredCourses = new Array();
     for(var i = 0; i < courses.length; i++)
     {
-      if(courses[i].concentration == val)
+      if(courses[i].concentration.includes(val))
       {
         filteredCourses.push(courses[i]);
       }
