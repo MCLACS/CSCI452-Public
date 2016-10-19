@@ -60,6 +60,7 @@ function checkLogin() {
         $('#name').append(json[0].f_name + " " + json[0].l_name);
         $('.welcome').show();
         $('.loginHide').hide();
+        $('#create-button').hide();
       }
     },
     error:  function() {

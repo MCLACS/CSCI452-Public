@@ -29,7 +29,7 @@ function loadCourses() {
     data: {},
     success: function(json){
       user = json.pop();
-      $('#name').append(user.f_name + " " + user.l_name);
+      $('#name');
       courses = json;
       table = $('#course_table').DataTable( {
         paging: false,
