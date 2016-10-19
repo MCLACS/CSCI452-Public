@@ -66,6 +66,7 @@ CREATE TABLE user_courses
 (
 	user_id int NOT NULL,
 	course_id int NOT NULL,
+	taken boolean NOT NULL DEFAULT FALSE,
 	PRIMARY KEY(user_id, course_id),
 	FOREIGN KEY(user_id) REFERENCES users(user_id) ON DELETE CASCADE,
 	FOREIGN KEY(course_id) REFERENCES courses(course_id) ON DELETE CASCADE
@@ -83,8 +84,8 @@ VALUES('A20016137', 'Eric', 'Rogers', 'er6137@mcla.edu', 'password', 1);
 INSERT INTO concentrations VALUES (NULL, 'Software Development');
 INSERT INTO concentrations VALUES (NULL, 'Information Technology');
 
-INSERT INTO user_conc VALUES (1,1);
-INSERT INTO user_conc VALUES (2, 1);
+-- INSERT INTO user_conc VALUES (1,1);
+-- INSERT INTO user_conc VALUES (2, 1);
 
 INSERT INTO courses VALUES (NULL, 'Programming in Java I', 'CSCI-121', 3);
 INSERT INTO courses VALUES (NULL, 'Network Theory & Administration I', 'CSCI-210', 3);

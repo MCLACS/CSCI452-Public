@@ -2,6 +2,24 @@ var user;
 var courses;
 var table;
 
+$(document).on("click", ".courseCheckbox", function()
+{
+  var courseNumber = $(this).attr('courseNum');
+  // alert(row);
+  var checked = $(this).is(":checked");
+  $.ajax({
+        url: "http://localhost/CSCI452-Public/PHP/courses.php?cmd=saveChecked&checked=" + checked + "&courseNumber=" + courseNumber,
+    type: 'POST',
+    contenttype: "application/json",
+    success: function(json){
+      console.log("success");
+    },
+    error:  function(request, status, error) {
+      alert(request.responseText);
+    }
+  });
+});
+
 function loadCourses() {
 
   $.ajax({
@@ -17,12 +35,22 @@ function loadCourses() {
         paging: false,
         data: courses,
         columns: [
-          { data: 'course_number'},
-          { data: 'course_name' },
-          { data: 'prerequisite' },
-          { data: 'concentration' }
-        ],
-      });
+        { data: 'course_number'},
+        { data: 'course_name' },
+        { data: 'prerequisite' },
+        { data: 'concentration' },
+          { // populate table with checkboxes
+           data: 'taken',
+           render: function(data, type, row)
+           {
+             console.log(row);
+             if(type == 'display')
+               return '<input type="checkbox" courseNum="'+row.course_number+'" class="editor-active courseCheckbox">';
+
+             return row;
+           }
+         }],
+       });
     },
     error:  function() {
       console.log("ajax request failed..");
@@ -54,10 +82,10 @@ function buildTable(data) {
     paging: false,
     data: data,
     columns: [
-      { data: 'course_number'},
-      { data: 'course_name' },
-      { data: 'prerequisite' },
-      { data: 'concentration' }
+    { data: 'course_number'},
+    { data: 'course_name' },
+    { data: 'prerequisite' },
+    { data: 'concentration' }
     ],
   });
   table = tempTable;

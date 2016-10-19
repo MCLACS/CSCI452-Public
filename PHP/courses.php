@@ -27,9 +27,14 @@
     echo json_encode($response);
 
   }
+  elseif($cmd == "saveChecked")
+  {
+    $response = saveChecked(getValue("checked"), getValue("courseNumber"));
+    echo json_encode($response);
+  }
   else
   {
-    echo json_encode("Please specify a value for cmd. Command supported: loadAll");
+    echo json_encode("Please specify a value for cmd. Command supported: loadAll, saveChecked");
   }
 
   function loadAll()
@@ -46,6 +51,38 @@
 
     setSessionValue("courses", $response);
     return $response;
+  }
+
+  function saveChecked($checked, $courseNumber)
+  {
+    $user = getSessionValue("user", array());
+
+    global $mysqli;
+    $userId = $user[0]['user_id'];
+
+    if($checked == true)
+      $temp = 1;
+    else
+      $temp = false;
+
+    //print_r($userId.$courseNumber.$checked);
+
+    $update = "SELECT taken FROM user_courses";
+    $res = $mysqli->query($update) or die(mysqli_error($mysqli));
+
+    print_r($res);
+    if($update != 0)
+    {
+      $query = "UPDATE user_courses (user_id, course_id, taken) VALUES ('$userId', (SELECT course_id FROM courses WHERE course_number = '$courseNumber'), '$temp')";
+    }
+    else
+      $query = "INSERT INTO user_courses (user_id, course_id, taken) VALUES ('$userId', (SELECT course_id FROM courses WHERE course_number = '$courseNumber'), '$temp')";
+
+    // $query = "INSERT INTO user_courses (user_id, course_id, taken) VALUES ('$userId', (SELECT course_id FROM courses WHERE course_number = '$course_number'), '$temp')";
+    $res = $mysqli->query($query) or die(mysqli_error($mysqli));
+
+
+    return true;
   }
 
   $mysqli->close();
