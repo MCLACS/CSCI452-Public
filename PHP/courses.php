@@ -29,7 +29,10 @@
   }
   elseif($cmd == "saveChecked")
   {
-    $response = saveChecked(getValue("checked"), getValue("courseNumber"));
+    $taken = getValue('taken');
+    $course = getValue('course');
+    print_r($taken." ".$course);
+    $response = saveChecked($taken, $course);
     echo json_encode($response);
   }
   else
@@ -53,34 +56,21 @@
     return $response;
   }
 
-  function saveChecked($checked, $courseNumber)
-  {
+  function saveChecked($taken, $course){
     $user = getSessionValue("user", array());
-
     global $mysqli;
     $userId = $user[0]['user_id'];
-
-    if($checked == true)
-      $temp = 1;
-    else
-      $temp = false;
-
-    //print_r($userId.$courseNumber.$checked);
-
-    $update = "SELECT taken FROM user_courses";
-    $res = $mysqli->query($update) or die(mysqli_error($mysqli));
-
-    print_r($res);
-    if($update != 0)
-    {
-      $query = "UPDATE user_courses (user_id, course_id, taken) VALUES ('$userId', (SELECT course_id FROM courses WHERE course_number = '$courseNumber'), '$temp')";
-    }
-    else
-      $query = "INSERT INTO user_courses (user_id, course_id, taken) VALUES ('$userId', (SELECT course_id FROM courses WHERE course_number = '$courseNumber'), '$temp')";
-
-    // $query = "INSERT INTO user_courses (user_id, course_id, taken) VALUES ('$userId', (SELECT course_id FROM courses WHERE course_number = '$course_number'), '$temp')";
+    // if($taken == true)
+    // {
+    //   $taken = 1;
+    // }
+    // else
+    // {
+    //   $taken = 0;
+    // }
+    // print_r($userId.$course.$taken);
+    $query = "INSERT INTO user_courses (user_id, course_id, taken) VALUES ('$userId', (SELECT course_id FROM courses WHERE course_number = '$course'), '$taken') ON DUPLICATE KEY UPDATE taken = '!$taken'";
     $res = $mysqli->query($query) or die(mysqli_error($mysqli));
-
 
     return true;
   }
