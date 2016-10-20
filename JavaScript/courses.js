@@ -2,14 +2,22 @@ var user;
 var courses;
 var table;
 
-$(document).on("click", ".courseCheckbox", function()
-{
-  var courseNumber = $(this).attr('courseNum');
-  // alert(row);
-  var checked = $(this).is(":checked");
+
+$(document).on('change', ':checkbox', function(){
+  var taken = $('.courseCheckbox').is(':checked');
+  var course = $(this).closest('tr')[0];
+  course = course.cells[0];
+  // var row = table.rows().data();
+  // console.log(course.innerText);
+
   $.ajax({
-        url: "http://localhost/CSCI452-Public/PHP/courses.php?cmd=saveChecked&checked=" + checked + "&courseNumber=" + courseNumber,
+    url: 'http://localhost/CSCI452-Public/PHP/courses.php?cmd=saveChecked',
     type: 'POST',
+    data: 
+    {
+      'taken': taken,
+      'course': course.innerText
+    },
     contenttype: "application/json",
     success: function(json){
       console.log("success");
@@ -18,7 +26,7 @@ $(document).on("click", ".courseCheckbox", function()
       alert(request.responseText);
     }
   });
-});
+})
 
 function loadCourses() {
 
@@ -29,7 +37,7 @@ function loadCourses() {
     data: {},
     success: function(json){
       user = json.pop();
-      $('#name');
+      $('#name')
       courses = json;
       table = $('#course_table').DataTable( {
         paging: false,
@@ -39,18 +47,16 @@ function loadCourses() {
         { data: 'course_name' },
         { data: 'prerequisite' },
         { data: 'concentration' },
-          { // populate table with checkboxes
-           data: 'taken',
-           render: function(data, type, row)
-           {
-             console.log(row);
-             if(type == 'display')
-               return '<input type="checkbox" courseNum="'+row.course_number+'" class="editor-active courseCheckbox">';
-
-             return row;
-           }
-         }],
-       });
+        { // populate table with checkboxes
+          data: 'taken',
+          render: function(data, type, row)
+          {
+            if(type == 'display')
+              return '<input type="checkbox" class="courseCheckbox">';
+            return row;
+          }
+        }],
+      });
     },
     error:  function() {
       console.log("ajax request failed..");
