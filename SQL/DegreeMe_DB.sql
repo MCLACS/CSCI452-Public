@@ -16,7 +16,7 @@ CREATE TABLE users
 	f_name varchar(25) NOT NULL,
 	l_name varchar(25) NOT NULL,
 	email varchar(50) NOT NULL UNIQUE,
-	password varchar(25) NOT NULL,
+	password varchar(50) NOT NULL,
 	role_id int,
 	FOREIGN KEY (role_id) REFERENCES roles(role_id)
 );
@@ -40,7 +40,7 @@ CREATE TABLE courses
 (
 	course_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	course_name varchar(75) NOT NULL,
-	course_number varchar(8) NOT NULL,
+	course_number varchar(10) NOT NULL,
 	course_credits int NOT NULL
 );
 

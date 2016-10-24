@@ -21,7 +21,7 @@
   {
     $a_number = getValue('aNumber');
     $a_number = mysqli_real_escape_string($mysqli,$a_number);
-    $password = getValue('password');
+    $password = md5(getValue('password'));
     $password = mysqli_real_escape_string($mysqli,$password);
     $f_name = getValue('firstName');
     $f_name = mysqli_real_escape_string($mysqli,$f_name);
