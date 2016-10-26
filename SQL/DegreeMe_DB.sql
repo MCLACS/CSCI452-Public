@@ -16,7 +16,7 @@ CREATE TABLE users
 	f_name varchar(25) NOT NULL,
 	l_name varchar(25) NOT NULL,
 	email varchar(50) NOT NULL UNIQUE,
-	password varchar(25) NOT NULL,
+	password varchar(50) NOT NULL,
 	role_id int,
 	FOREIGN KEY (role_id) REFERENCES roles(role_id)
 );
@@ -40,7 +40,7 @@ CREATE TABLE courses
 (
 	course_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	course_name varchar(75) NOT NULL,
-	course_number varchar(8) NOT NULL,
+	course_number varchar(10) NOT NULL,
 	course_credits int NOT NULL
 );
 
@@ -66,7 +66,7 @@ CREATE TABLE user_courses
 (
 	user_id int NOT NULL,
 	course_id int NOT NULL,
-	taken boolean NOT NULL DEFAULT FALSE,
+	taken boolean,
 	PRIMARY KEY(user_id, course_id),
 	FOREIGN KEY(user_id) REFERENCES users(user_id),
 	FOREIGN KEY(course_id) REFERENCES courses(course_id)
