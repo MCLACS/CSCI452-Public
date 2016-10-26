@@ -1,7 +1,7 @@
 function editAccount(){
 	if($('#password').val() == $('#confirmPassword').val()) {
 		$.ajax({
-			url: 'http://localhost/CSCI452-Public/PHP/edit.php?cmd=edit',
+			url: '/CSCI452-Public/PHP/edit.php?cmd=edit',
 			type: 'GET',
 			contentType: "application/json",
 			data: {
@@ -11,7 +11,7 @@ function editAccount(){
 				'email': $('#email').val()
 			},
 			success: function(json){
-				window.location.assign('http://localhost/CSCI452-Public/Views/index.html');
+				window.location.assign('/CSCI452-Public/Views/index.html');
 				console.log("success");
 			},
 			error:  function(request, status, error) {
@@ -24,11 +24,11 @@ function editAccount(){
 
 function deleteAccount(){
 	$.ajax({
-		url: 'http://localhost/CSCI452-Public/PHP/edit.php?cmd=delete',
+		url: '/CSCI452-Public/PHP/edit.php?cmd=delete',
 		type: 'DELETE',
 		contentType: "application/json",
 		success: function(json){
-			window.location.assign('http://localhost/CSCI452-Public/Views/index.html');
+			window.location.assign('/CSCI452-Public/Views/index.html');
 			console.log("success");
 		},
 		error:  function(request, status, error) {
@@ -40,7 +40,7 @@ function deleteAccount(){
 function getAccount()
 {
 	$.ajax({
-		url: 'http://localhost/CSCI452-Public/PHP/edit.php?cmd=account',
+		url: '/CSCI452-Public/PHP/edit.php?cmd=account',
 		contentType: "application/json",
 		success: function(json){
 			$('#password').val(json[0].password);

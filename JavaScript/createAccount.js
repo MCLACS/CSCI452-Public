@@ -4,12 +4,12 @@ function create() {
 
   if($('#password').val() == $('#confirmPassword').val()) {
     $.ajax({
-      url: 'http://localhost/CSCI452-Public/PHP/create.php?cmd=create',
+      url: '/CSCI452-Public/PHP/create.php?cmd=create',
       type: 'GET',
       contentType: "application/json",
       data: formData,
       success: function(json){
-        window.location.assign('http://localhost/CSCI452-Public/Views/index.html');
+        window.location.assign('/CSCI452-Public/Views/index.html');
         console.log("success");
       },
       error:  function(request, status, error) {

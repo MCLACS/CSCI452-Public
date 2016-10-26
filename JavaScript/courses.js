@@ -11,7 +11,7 @@ $(document).on('change', ':checkbox', function(){
   // console.log(course.innerText);
 
   $.ajax({
-    url: 'http://localhost/CSCI452-Public/PHP/courses.php?cmd=saveChecked',
+    url: '/CSCI452-Public/PHP/courses.php?cmd=saveChecked',
     type: 'POST',
     data: 
     {
@@ -31,7 +31,7 @@ $(document).on('change', ':checkbox', function(){
 function loadCourses() {
 
   $.ajax({
-    url: 'http://localhost/CSCI452-Public/PHP/courses.php?cmd=loadAll',
+    url: '/CSCI452-Public/PHP/courses.php?cmd=loadAll',
     type: 'GET',
     contenttype: "application/json",
     data: {},
