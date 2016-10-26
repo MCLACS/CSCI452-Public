@@ -1,7 +1,7 @@
 function login() {
 
   $.ajax({
-    url: 'http://localhost/CSCI452-Public/PHP/login.php?cmd=login',
+    url: '/CSCI452-Public/PHP/login.php?cmd=login',
     type: 'GET',
     contentType: "application/json",
     data: {
@@ -29,7 +29,7 @@ function login() {
 function logout() {
 
   $.ajax({
-    url: 'http://localhost/CSCI452-Public/PHP/login.php?cmd=logout',
+    url: '/CSCI452-Public/PHP/login.php?cmd=logout',
     type: 'GET',
     contentType: "application/json",
     data: {},
@@ -51,7 +51,7 @@ function logout() {
 function checkLogin() {
 
   $.ajax({
-    url: 'http://localhost/CSCI452-Public/PHP/login.php?cmd=checkLogin',
+    url: '/CSCI452-Public/PHP/login.php?cmd=checkLogin',
     type: 'GET',
     contentType: "application/json",
     data: {},
@@ -71,7 +71,7 @@ function checkLogin() {
 }
 
 function edit(){
-  window.location.assign('http://localhost/CSCI452-Public/Views/editAccount.html');
+  window.location.assign('/CSCI452-Public/Views/editAccount.html');
 }
 
 function init() {

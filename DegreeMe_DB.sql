@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 DROP DATABASE IF EXISTS degree_me;
 CREATE DATABASE degree_me;
 
@@ -17,7 +16,7 @@ CREATE TABLE users
 	f_name varchar(25) NOT NULL,
 	l_name varchar(25) NOT NULL,
 	email varchar(50) NOT NULL UNIQUE,
-	password varchar(50) NOT NULL,
+	password varchar(25) NOT NULL,
 	role_id int,
 	FOREIGN KEY (role_id) REFERENCES roles(role_id)
 );
@@ -41,7 +40,7 @@ CREATE TABLE courses
 (
 	course_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	course_name varchar(75) NOT NULL,
-	course_number varchar(10) NOT NULL,
+	course_number varchar(8) NOT NULL,
 	course_credits int NOT NULL
 );
 
@@ -54,28 +53,22 @@ CREATE TABLE course_conc
 	FOREIGN KEY(conc_id) REFERENCES concentrations(conc_id)
 );
 
-CREATE TABLE prereq_text
+CREATE TABLE prerequisites
 (
-	prereq_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	prereq_name varchar(75) NOT NULL
+	course_id int NOT NULL,
+	prereq_id int NOT NULL,
+	PRIMARY KEY(course_id, prereq_id),
+	FOREIGN KEY(course_id) REFERENCES courses(course_id),
+	FOREIGN KEY(prereq_id) REFERENCES courses(course_id)
 );
 
 CREATE TABLE user_courses
 (
 	user_id int NOT NULL,
 	course_id int NOT NULL,
-	taken boolean,
+	taken boolean NOT NULL DEFAULT FALSE,
 	PRIMARY KEY(user_id, course_id),
 	FOREIGN KEY(user_id) REFERENCES users(user_id),
-	FOREIGN KEY(course_id) REFERENCES courses(course_id)
-);
-
-CREATE TABLE prereq_bridge
-(
-	course_id int not null,
-	prereq_id int not null,
-	PRIMARY KEY(prereq_id, course_id),
-	FOREIGN KEY(prereq_id) REFERENCES prereq_text(prereq_id),
 	FOREIGN KEY(course_id) REFERENCES courses(course_id)
 );
 
@@ -143,6 +136,7 @@ INSERT INTO courses VALUES (NULL, 'Physics Elective', 'PHYS-131+', 3);
 INSERT INTO courses VALUES (NULL, 'MATH Elective', 'MATH 200+', 3);
 INSERT INTO courses VALUES (NULL, 'Computing and Communications', 'CCCL-100', 3);
 INSERT INTO courses VALUES (NULL, 'Quantitative Reasoning', 'CMA', 3);
+
 
 INSERT INTO course_conc VALUES (1,1);
 INSERT INTO course_conc VALUES (2,1);
@@ -223,77 +217,51 @@ INSERT INTO course_conc VALUES (43,4);
 INSERT INTO course_conc VALUES (44,4);
 INSERT INTO course_conc VALUES (45,4);
 
-INSERT INTO prereq_text VALUES (NULL, 'Introduction to Computer Science');
-INSERT INTO prereq_text VALUES (NULL, 'Programming in Java I');
-INSERT INTO prereq_text VALUES (NULL, 'Network Theory & Administration I');
-INSERT INTO prereq_text VALUES (NULL, 'Programming in Java II');
-INSERT INTO prereq_text VALUES (NULL, 'Programming in Java III');
-INSERT INTO prereq_text VALUES (NULL, 'Data Structures & Algorithms');
-INSERT INTO prereq_text VALUES (NULL, 'Digital Circuit Design');
-INSERT INTO prereq_text VALUES (NULL, 'Programming in Java IV');
-INSERT INTO prereq_text VALUES (NULL, 'Object Oriented Design');
-INSERT INTO prereq_text VALUES (NULL, 'Web Development');
-INSERT INTO prereq_text VALUES (NULL, 'Database Development');
-INSERT INTO prereq_text VALUES (NULL, 'Server-Side Software Development');
-INSERT INTO prereq_text VALUES (NULL, 'Junior Qualification Symposium');
-INSERT INTO prereq_text VALUES (NULL, 'Senior Project I');
-INSERT INTO prereq_text VALUES (NULL, 'Macroeconomics');
-INSERT INTO prereq_text VALUES (NULL, 'Programming in C I');
-INSERT INTO prereq_text VALUES (NULL, 'Programming in C II');
-INSERT INTO prereq_text VALUES (NULL, 'Financial Accounting');
-INSERT INTO prereq_text VALUES (NULL, 'Information Technology for Business');
-INSERT INTO prereq_text VALUES (NULL, 'Systems Development');
-INSERT INTO prereq_text VALUES (NULL, 'Introduction to Biology');
-INSERT INTO prereq_text VALUES (NULL, 'Zoology');
-INSERT INTO prereq_text VALUES (NULL, 'Genetics');
-INSERT INTO prereq_text VALUES (NULL, 'Network Theory & Administration II');
-INSERT INTO prereq_text VALUES (NULL, 'Network Security I');
-INSERT INTO prereq_text VALUES (NULL, 'MATH Elective');
-INSERT INTO prereq_text VALUES (NULL, 'Computing and Communications');
-INSERT INTO prereq_text VALUES (NULL, 'Quantitative Reasoning');
+INSERT INTO prerequisites VALUES (4,2);
+INSERT INTO prerequisites VALUES (5,4);
+INSERT INTO prerequisites VALUES (6,4);
+INSERT INTO prerequisites VALUES (8,5);
+INSERT INTO prerequisites VALUES (9,6);
+INSERT INTO prerequisites VALUES (10,4);
+INSERT INTO prerequisites VALUES (11,7);
+INSERT INTO prerequisites VALUES (12,4);
+INSERT INTO prerequisites VALUES (15,13);
+INSERT INTO prerequisites VALUES (15,14);
+INSERT INTO prerequisites VALUES (15,4);
+INSERT INTO prerequisites VALUES (16,8);
+INSERT INTO prerequisites VALUES (16,7);
+INSERT INTO prerequisites VALUES (16,13);
+INSERT INTO prerequisites VALUES (16,14);
+INSERT INTO prerequisites VALUES (17,12);
+INSERT INTO prerequisites VALUES (17,15);
+INSERT INTO prerequisites VALUES (18,15);
+INSERT INTO prerequisites VALUES (18,16);
+INSERT INTO prerequisites VALUES (19,17);
+INSERT INTO prerequisites VALUES (22,21);
+INSERT INTO prerequisites VALUES (23,47);
+INSERT INTO prerequisites VALUES (24,4);
+INSERT INTO prerequisites VALUES (24,22);
+INSERT INTO prerequisites VALUES (25,46);
+INSERT INTO prerequisites VALUES (26,25);
+INSERT INTO prerequisites VALUES (26,20);
+INSERT INTO prerequisites VALUES (27,30);
+INSERT INTO prerequisites VALUES (28,46);
+INSERT INTO prerequisites VALUES (29,28);
+INSERT INTO prerequisites VALUES (32,4);
+INSERT INTO prerequisites VALUES (33,31);
+INSERT INTO prerequisites VALUES (34,31);
+INSERT INTO prerequisites VALUES (35,31);
+INSERT INTO prerequisites VALUES (36,45);
+INSERT INTO prerequisites VALUES (37,35);
+INSERT INTO prerequisites VALUES (37,34);
+INSERT INTO prerequisites VALUES (38,35);
+INSERT INTO prerequisites VALUES (38,14);
+INSERT INTO prerequisites VALUES (39,3);
+INSERT INTO prerequisites VALUES (40,1);
+INSERT INTO prerequisites VALUES (41,39);
+INSERT INTO prerequisites VALUES (42,41);
 
-INSERT INTO prereq_bridge VALUES (4,2);
-INSERT INTO prereq_bridge VALUES (5,4);
-INSERT INTO prereq_bridge VALUES (6,4);
-INSERT INTO prereq_bridge VALUES (8,5);
-INSERT INTO prereq_bridge VALUES (9,6);
-INSERT INTO prereq_bridge VALUES (10,4);
-INSERT INTO prereq_bridge VALUES (11,7);
-INSERT INTO prereq_bridge VALUES (12,4);
-INSERT INTO prereq_bridge VALUES (15,10);
-INSERT INTO prereq_bridge VALUES (15,11);
-INSERT INTO prereq_bridge VALUES (15,4);
-INSERT INTO prereq_bridge VALUES (16,8);
-INSERT INTO prereq_bridge VALUES (16,7);
-INSERT INTO prereq_bridge VALUES (16,10);
-INSERT INTO prereq_bridge VALUES (16,11);
-INSERT INTO prereq_bridge VALUES (17,9);
-INSERT INTO prereq_bridge VALUES (18,9);
-INSERT INTO prereq_bridge VALUES (18,10);
-INSERT INTO prereq_bridge VALUES (19,11);
-INSERT INTO prereq_bridge VALUES (22,13);
-INSERT INTO prereq_bridge VALUES (23,19);
-INSERT INTO prereq_bridge VALUES (24,4);
-INSERT INTO prereq_bridge VALUES (24,14);
-INSERT INTO prereq_bridge VALUES (25,27);
-INSERT INTO prereq_bridge VALUES (26,18);
-INSERT INTO prereq_bridge VALUES (26,12);
-INSERT INTO prereq_bridge VALUES (27,12);
-INSERT INTO prereq_bridge VALUES (28,27);
-INSERT INTO prereq_bridge VALUES (29,19);
-INSERT INTO prereq_bridge VALUES (32,4);
-INSERT INTO prereq_bridge VALUES (33,13);
-INSERT INTO prereq_bridge VALUES (34,13);
-INSERT INTO prereq_bridge VALUES (35,13);
-INSERT INTO prereq_bridge VALUES (36,26);
-INSERT INTO prereq_bridge VALUES (37,23);
-INSERT INTO prereq_bridge VALUES (37,14);
-INSERT INTO prereq_bridge VALUES (38,23);
-INSERT INTO prereq_bridge VALUES (38,11);
-INSERT INTO prereq_bridge VALUES (39,3);
-INSERT INTO prereq_bridge VALUES (40,1);
-INSERT INTO prereq_bridge VALUES (41,24);
-INSERT INTO prereq_bridge VALUES (42,18);
+
 
 
 SELECT * FROM users;

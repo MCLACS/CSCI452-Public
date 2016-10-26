@@ -58,7 +58,6 @@
     $user = getSessionValue("user", array());
     global $mysqli;
     $userId = $user[0]['user_id'];
-    //$temp = ($taken) ? 1 : 0;
     print_r($userId." ".$course." ".$taken);
     $query = "REPLACE INTO user_courses (user_id, course_id, taken) VALUES ('$userId', (SELECT course_id FROM courses WHERE course_number = '$course'), '$taken');";
     $res = $mysqli->query($query) or die(mysqli_error($mysqli));
