@@ -50,8 +50,9 @@ function edit($password, $f_name, $l_name, $email)
 {
   $user = getSessionValue('user', array());
   global $mysqli;
+  $salt = '$2a$09$kfu783hf76hbdl9jw7yh4i$';
   $response = array();
-  $password = md5($password);
+  $password = crypt($password, $salt);
   $temp = $user[0]['user_id'];
   $query = "UPDATE users SET f_name = '$f_name', l_name = '$l_name', email = '$email', password = '$password' WHERE user_id = '$temp'";
   $query2 = "SELECT user_id, f_name, l_name, password, email FROM users WHERE user_id = '$temp'";

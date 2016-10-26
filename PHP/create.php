@@ -19,9 +19,10 @@
 
   if ($cmd == "create")
   {
+    $salt = '$2a$09$kfu783hf76hbdl9jw7yh4i$';
     $a_number = getValue('aNumber');
     $a_number = mysqli_real_escape_string($mysqli,$a_number);
-    $password = md5(getValue('password'));
+    $password = crypt(getValue('password'), $salt);
     $password = mysqli_real_escape_string($mysqli,$password);
     $f_name = getValue('firstName');
     $f_name = mysqli_real_escape_string($mysqli,$f_name);
