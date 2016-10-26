@@ -60,16 +60,8 @@
     $user = getSessionValue("user", array());
     global $mysqli;
     $userId = $user[0]['user_id'];
-    // if($taken == true)
-    // {
-    //   $taken = 1;
-    // }
-    // else
-    // {
-    //   $taken = 0;
-    // }
-    // print_r($userId.$course.$taken);
-    $query = "INSERT INTO user_courses (user_id, course_id, taken) VALUES ('$userId', (SELECT course_id FROM courses WHERE course_number = '$course'), '$taken') ON DUPLICATE KEY UPDATE taken = '!$taken'";
+
+    $query = "INSERT INTO user_courses (user_id, course_id, taken) VALUES ('$userId', (SELECT course_id FROM courses WHERE course_number = '$course'), '$taken') ON DIPLICATE KEY UPDATE taken = VALUES ('!$taken')";
     $res = $mysqli->query($query) or die(mysqli_error($mysqli));
 
     return true;

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 DROP DATABASE IF EXISTS degree_me;
 CREATE DATABASE degree_me;
 

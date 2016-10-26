@@ -21,7 +21,7 @@
   {
     $a_number = getValue('a_number');
     $a_number = mysqli_real_escape_string($mysqli,$a_number);
-    $password = getValue('password');
+    $password = md5(getValue('password'));
     $password = mysqli_real_escape_string($mysqli,$password);
     $response = login($a_number, $password);
     echo json_encode($response);
