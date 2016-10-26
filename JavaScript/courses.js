@@ -9,14 +9,20 @@ $(document).on('change', ':checkbox', function(){
   course = course.cells[0];
   // var row = table.rows().data();
   // console.log(course.innerText);
+  if(taken)
+        taken =  1;
+  else
+        taken =  0;
+
 
   $.ajax({
     url: '/CSCI452-Public/PHP/courses.php?cmd=saveChecked',
     type: 'POST',
     data: 
     {
-      'taken': taken,
-      'course': course.innerText
+      
+      'course': course.innerText,
+      'taken': taken
     },
     contenttype: "application/json",
     success: function(json){
@@ -52,7 +58,11 @@ function loadCourses() {
           render: function(data, type, row)
           {
             if(type == 'display')
-              return '<input type="checkbox" class="courseCheckbox">';
+              console.log(row);
+              if(row.taken == true)
+                return '<input type="checkbox" class="courseCheckbox" checked>';
+              else
+                return '<input type="checkbox" class="courseCheckbox">';
             return row;
           }
         }],

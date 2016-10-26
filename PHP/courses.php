@@ -31,9 +31,7 @@
   {
     $taken = getValue('taken');
     $course = getValue('course');
-    print_r($taken." ".$course);
-    $response = saveChecked($taken, $course);
-    echo json_encode($response);
+    saveChecked($taken, $course);
   }
   else
   {
@@ -60,11 +58,9 @@
     $user = getSessionValue("user", array());
     global $mysqli;
     $userId = $user[0]['user_id'];
-
-    $query = "INSERT INTO user_courses (user_id, course_id, taken) VALUES ('$userId', (SELECT course_id FROM courses WHERE course_number = '$course'), '$taken') ON DIPLICATE KEY UPDATE taken = VALUES ('!$taken')";
+    print_r($userId." ".$course." ".$taken);
+    $query = "REPLACE INTO user_courses (user_id, course_id, taken) VALUES ('$userId', (SELECT course_id FROM courses WHERE course_number = '$course'), '$taken');";
     $res = $mysqli->query($query) or die(mysqli_error($mysqli));
-
-    return true;
   }
 
   $mysqli->close();
