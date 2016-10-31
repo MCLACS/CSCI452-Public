@@ -45,13 +45,18 @@
     $user = getSessionValue("user", array());
     global $mysqli;
     $response = array();
-    $query = "SELECT user_id, f_name, l_name, password, email FROM users WHERE a_number= '$a_number' AND password= '$password'";
-    $res = $mysqli->query($query) or die(mysqli_error($mysqli));
+    $query = "SELECT user_id, f_name, l_name, password, email FROM users WHERE a_number= '?' AND password= '?'";
+    $stmt = $mysqli->stmt_init();
+    $stmt->prepare($query) or die(mysqli_error($mysqli));
+    $stmt->bind_param($a_number, $password);
+    $stmt->execute();
+    $res = $stmt->get_result();
     while($row = $res->fetch_assoc())
     {
         $response[] = $row;
     }
     setSessionValue("user", $response);
+    $stmt->close();
     return $response;
   }
 

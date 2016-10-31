@@ -54,15 +54,28 @@ function edit($password, $f_name, $l_name, $email)
   $response = array();
   $password = crypt($password, $salt);
   $temp = $user[0]['user_id'];
-  $query = "UPDATE users SET f_name = '$f_name', l_name = '$l_name', email = '$email', password = '$password' WHERE user_id = '$temp'";
-  $query2 = "SELECT user_id, f_name, l_name, password, email FROM users WHERE user_id = '$temp'";
-  $res = $mysqli->query($query) or die(mysqli_error($mysqli));
-  $res2 = $mysqli->query($query2) or die(mysqli_error($mysqli));
+
+  $query = "UPDATE users SET f_name = '?', l_name = '?', email = '?', password = '?' WHERE user_id = '?'";
+  $stmt1 = $mysqli->stmt_init();
+  $stmt1->prepare($query) or die(mysqli_error($mysqli));
+  $stmt1->bind_param($f_name, $l_name, $email, $password, $temp);
+  $stmt1->execute();
+  $res = $stmt->get_result();
+
+  $query2 = "SELECT user_id, f_name, l_name, password, email FROM users WHERE user_id = '?'";
+  $stmt2 = $mysqli->stmt_init();
+  $stmt2->prepare($query) or die(mysqli_error($mysqli));
+  $stmt2->bind_param($temp);
+  $stmt2->execute();
+  $res2 = $stmt->get_result();
+
   while($row = $res2->fetch_assoc())
     {
         $response[] = $row;
     }
   setSessionValue('user', $response);
+  $stmt1->close();
+  $stmt2->close();
   return true;
 }
 
@@ -72,9 +85,13 @@ function delete()
   global $mysqli;
   $response = array();
   $temp = $user[0]['user_id'];
-  $query = "DELETE FROM users WHERE user_id = '$temp'";
-  $res = $mysqli->query($query) or die(mysqli_error($mysqli));
-
+  $query = "DELETE FROM users WHERE user_id = '?'";
+  $stmt = $mysqli->stmt_init();
+  $stmt->prepare($query) or die(mysqli_error($mysqli));
+  $stmt->bind_param($temp);
+  $stmt->execute();
+  $res = $stmt->get_result();
+  $stmt->close();
   return true;
 }
 

@@ -42,9 +42,13 @@
   {
       global $mysqli;
       $response = array();
-      $query = "INSERT INTO users (a_number, f_name, l_name, email, password) VALUES ('$a_number', '$f_name', '$l_name', '$email', '$password')";
-      $res = $mysqli->query($query) or die(mysqli_error($mysqli));
-
+      $query = "INSERT INTO users (a_number, f_name, l_name, email, password) VALUES ('?', '?', '?', '?', '?')";
+      $stmt = $mysqli->stmt_init();
+      $stmt->prepare($query) or die(mysqli_error($mysqli));
+      $stmt->bind_param($a_number, $f_name, $l_name, $email, $password);
+      $stmt->execute();
+      $res = $stmt->get_result();
+      $stmt->close();
       return true;
   }
 
