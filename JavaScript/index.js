@@ -63,8 +63,8 @@ function checkLogin() {
         $('#create-button').hide();
       }
     },
-    error:  function() {
-      console.log("ajax request failed..");
+    error:  function(request, status, error) {
+			alert(request.responseText);
     }
   });
 

@@ -55,17 +55,17 @@ function edit($password, $f_name, $l_name, $email)
   $password = crypt($password, $salt);
   $temp = $user[0]['user_id'];
 
-  $query = "UPDATE users SET f_name = '?', l_name = '?', email = '?', password = '?' WHERE user_id = '?'";
+  $query = "UPDATE users SET f_name = ?, l_name = ?, email = ?, password = ? WHERE user_id = ?";
   $stmt1 = $mysqli->stmt_init();
   $stmt1->prepare($query) or die(mysqli_error($mysqli));
-  $stmt1->bind_param($f_name, $l_name, $email, $password, $temp);
+  $stmt1->bind_param('sssss', $f_name, $l_name, $email, $password, $temp);
   $stmt1->execute();
   $res = $stmt->get_result();
 
-  $query2 = "SELECT user_id, f_name, l_name, password, email FROM users WHERE user_id = '?'";
+  $query2 = "SELECT user_id, f_name, l_name, password, email FROM users WHERE user_id = ?";
   $stmt2 = $mysqli->stmt_init();
   $stmt2->prepare($query) or die(mysqli_error($mysqli));
-  $stmt2->bind_param($temp);
+  $stmt2->bind_param('s', $temp);
   $stmt2->execute();
   $res2 = $stmt->get_result();
 
@@ -85,10 +85,10 @@ function delete()
   global $mysqli;
   $response = array();
   $temp = $user[0]['user_id'];
-  $query = "DELETE FROM users WHERE user_id = '?'";
+  $query = "DELETE FROM users WHERE user_id = ?";
   $stmt = $mysqli->stmt_init();
   $stmt->prepare($query) or die(mysqli_error($mysqli));
-  $stmt->bind_param($temp);
+  $stmt->bind_param('s', $temp);
   $stmt->execute();
   $res = $stmt->get_result();
   $stmt->close();

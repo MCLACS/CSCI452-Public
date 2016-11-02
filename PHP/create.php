@@ -42,10 +42,11 @@
   {
       global $mysqli;
       $response = array();
-      $query = "INSERT INTO users (a_number, f_name, l_name, email, password) VALUES ('?', '?', '?', '?', '?')";
+      $query = "INSERT INTO users (a_number, f_name, l_name, email, password) VALUES (?, ?, ?, ?, ?)";
       $stmt = $mysqli->stmt_init();
       $stmt->prepare($query) or die(mysqli_error($mysqli));
-      $stmt->bind_param($a_number, $f_name, $l_name, $email, $password);
+      $stmt->bind_param('sssss', $a_number, $f_name, $l_name, $email, $password);
+      //$stmt->bind_param('i', $film_id);
       $stmt->execute();
       $res = $stmt->get_result();
       $stmt->close();

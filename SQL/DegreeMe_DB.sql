@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 DROP DATABASE IF EXISTS degree_me;
 CREATE DATABASE degree_me;
 
@@ -17,7 +16,7 @@ CREATE TABLE users
 	f_name varchar(25) NOT NULL,
 	l_name varchar(25) NOT NULL,
 	email varchar(50) NOT NULL UNIQUE,
-	password varchar(50) NOT NULL,
+	password varchar(500) NOT NULL,
 	role_id int,
 	FOREIGN KEY (role_id) REFERENCES roles(role_id)
 );

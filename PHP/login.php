@@ -22,7 +22,9 @@
     $salt = '$2a$09$kfu783hf76hbdl9jw7yh4i$';
     $a_number = getValue('a_number');
     $a_number = mysqli_real_escape_string($mysqli,$a_number);
+    echo 'Blah1 ' . getValue('password') . "    ";
     $password = crypt(getValue('password'), $salt);
+    echo 'Blah 2 ' . $password . "   ";
     $password = mysqli_real_escape_string($mysqli,$password);
     $response = login($a_number, $password);
     echo json_encode($response);
@@ -45,10 +47,10 @@
     $user = getSessionValue("user", array());
     global $mysqli;
     $response = array();
-    $query = "SELECT user_id, f_name, l_name, password, email FROM users WHERE a_number= '?' AND password= '?'";
+    $query = "SELECT user_id, f_name, l_name, password, email FROM users WHERE a_number= ? AND password= ?";
     $stmt = $mysqli->stmt_init();
     $stmt->prepare($query) or die(mysqli_error($mysqli));
-    $stmt->bind_param($a_number, $password);
+    $stmt->bind_param('ss',$a_number, $password);
     $stmt->execute();
     $res = $stmt->get_result();
     while($row = $res->fetch_assoc())
