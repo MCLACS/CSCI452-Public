@@ -7,20 +7,16 @@ $(document).on('change', ':checkbox', function(){
   var taken = $('.courseCheckbox').is(':checked');
   var course = $(this).closest('tr')[0];
   course = course.cells[0];
-  // var row = table.rows().data();
-  // console.log(course.innerText);
   if(taken)
         taken =  1;
   else
         taken =  0;
-
 
   $.ajax({
     url: '/CSCI452-Public/PHP/courses.php?cmd=saveChecked',
     type: 'POST',
     data: 
     {
-      
       'course': course.innerText,
       'taken': taken
     },

@@ -22,9 +22,7 @@
     $salt = '$2a$09$kfu783hf76hbdl9jw7yh4i$';
     $a_number = getValue('a_number');
     $a_number = mysqli_real_escape_string($mysqli,$a_number);
-    echo 'Blah1 ' . getValue('password') . "    ";
     $password = crypt(getValue('password'), $salt);
-    echo 'Blah 2 ' . $password . "   ";
     $password = mysqli_real_escape_string($mysqli,$password);
     $response = login($a_number, $password);
     echo json_encode($response);
