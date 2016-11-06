@@ -43,10 +43,6 @@ function getAccount()
 		url: '/CSCI452-Public/PHP/edit.php?cmd=account',
 		contentType: "application/json",
 		success: function(json){
-<<<<<<< HEAD
-=======
-			// $('#password').val(json[0].password);
->>>>>>> master
 			$('#firstName').val(json[0].f_name);
 			$('#lastName').val(json[0].l_name);
 			$('#email').val(json[0].email);

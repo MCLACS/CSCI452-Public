@@ -19,8 +19,8 @@ function login() {
         $('#password').val("");
       }
     },
-    error:  function() {
-      console.log("ajax request failed..");
+    error:  function(request, status, error) {
+      alert(request.responseText);
     }
   });
 
@@ -41,8 +41,8 @@ function logout() {
       $('#edit-account').hide();
       $('#create-button').show();
     },
-    error:  function() {
-      console.log("ajax request failed..");
+    error:  function(request, status, error) {
+      alert(request.responseText);
     }
   });
 
