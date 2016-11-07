@@ -1,0 +1,8 @@
+[07-Nov-2016 17:35:03 UTC] PHP Warning:  mysqli::mysqli(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home/ubuntu/workspace/CSCI452-Public/PHP/login.php on line 12
+[07-Nov-2016 17:35:03 UTC] PHP Stack trace:
+[07-Nov-2016 17:35:03 UTC] PHP   1. {main}() /home/ubuntu/workspace/CSCI452-Public/PHP/login.php:0
+[07-Nov-2016 17:35:03 UTC] PHP   2. mysqli->mysqli() /home/ubuntu/workspace/CSCI452-Public/PHP/login.php:12
+[07-Nov-2016 17:35:27 UTC] PHP Warning:  mysqli::mysqli(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home/ubuntu/workspace/CSCI452-Public/PHP/create.php on line 12
+[07-Nov-2016 17:35:27 UTC] PHP Stack trace:
+[07-Nov-2016 17:35:27 UTC] PHP   1. {main}() /home/ubuntu/workspace/CSCI452-Public/PHP/create.php:0
+[07-Nov-2016 17:35:27 UTC] PHP   2. mysqli->mysqli() /home/ubuntu/workspace/CSCI452-Public/PHP/create.php:12
