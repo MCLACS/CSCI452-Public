@@ -1,5 +1,5 @@
 function login() {
-
+  console.log("login()");
   $.ajax({
     url: '/CSCI452-Public/PHP/login.php?cmd=login',
     type: 'GET',
