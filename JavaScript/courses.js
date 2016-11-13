@@ -4,7 +4,6 @@ var table;
 
 
 $(document).on('change', ':checkbox', function(){
-  console.log(this.checked);
   var course = $(this).closest('tr')[0];
   course = course.cells[0];
   if(this.checked)
