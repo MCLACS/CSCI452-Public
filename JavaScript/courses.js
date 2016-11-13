@@ -4,10 +4,10 @@ var table;
 
 
 $(document).on('change', ':checkbox', function(){
-  var taken = $('.courseCheckbox').is(':checked');
+  console.log(this.checked);
   var course = $(this).closest('tr')[0];
   course = course.cells[0];
-  if(taken)
+  if(this.checked)
         taken =  1;
   else
         taken =  0;
@@ -15,7 +15,7 @@ $(document).on('change', ':checkbox', function(){
   $.ajax({
     url: '/CSCI452-Public/PHP/courses.php?cmd=saveChecked',
     type: 'POST',
-    data: 
+    data:
     {
       'course': course.innerText,
       'taken': taken
@@ -39,7 +39,6 @@ function loadCourses() {
     data: {},
     success: function(json){
       user = json.pop();
-      $('#name')
       courses = json;
       table = $('#course_table').DataTable( {
         paging: false,
@@ -55,7 +54,7 @@ function loadCourses() {
           {
             if(type == 'display')
               console.log(row);
-              if(row.taken == true)
+              if(row.taken == 1)
                 return '<input type="checkbox" class="courseCheckbox" checked>';
               else
                 return '<input type="checkbox" class="courseCheckbox">';
