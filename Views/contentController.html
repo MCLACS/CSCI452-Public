@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-  <title>Create Account</title>
+  <title>Content Controller</title>
 
   <script type="text/javascript" src="../Utilities/jquery-3.1.1.min.js"></script>
   <link rel="stylesheet" href="../Utilities/bootstrap.min.css">
@@ -25,33 +25,30 @@
       <div class="col-md-3"></div>
     </div>
   </div>
-  <form id="accountInfo" method="GET">
+  <form id="contentInfo" method="GET">
     <div class="container">
       <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-10">
           <div class="content">
-            <h2 class="heading">Create Course</h2>
-          <div class="row">
-          	<select class="selectpicker">
-          		<option selected disabled>Select Action</option>
-          		<option>Add</option>
-          		<option>Edit</option>
-          		<option>Delete</option>
-          	</select>
-          	<select class="selectpicker">
-          		<option selected disabled>Select Type</option>
-          		<option>Concentration</option>
-          		<option>Course</option>
-          		<option>Prerequisite</option>
-          	</select>	
-
-          	<div class="concentration" >
+            <h2 id="content-controller-heading" class="heading">Content Controller</h2>
+            <div class="row content-option">
+            	<select class="selectpicker" title="Select Action">
+            		<option>Add</option>
+            		<option>Edit</option>
+            		<option>Delete</option>
+            	</select>
+            	<select class="selectpicker" title="Select Type">
+            		<option>Concentration</option>
+            		<option>Course</option>
+            		<option>Prerequisite</option>
+            	</select>
+            </div>
+          	<div class="row concentration content-option" hidden>
           		<label>Concentration Name</label>
           		<input placeholder="Concentration" type="text" name="" id=""></input>
           	</div>
-
-          	<div class="course" >
+          	<div class="row course content-option" hidden>
           		<label>Course Name</label>
           		<input placeholder="Name" type="text" name="" id=""></input>
           		<label>Course Number</label>
@@ -59,23 +56,22 @@
           		<label>Course Credits</label>
           		<input placeholder="Credits" type="text" name="" id=""></input>
           		<label>Course Prerequisites</label>
-          		
-          		<select class="selectpicker" multiple>
-          			
-          		</select>	
+
+          		<select class="selectpicker" title="Select Prerequisites" multiple></select>
           	</div>
 
-          	<div class="prereq">
+          	<div class="row prereq content-option" hidden>
           		<label>Prerequisite Name</label>
           		<input placeholder="Prerequisite" type="text" name="" id=""></input>
           	</div>
-		</div>
-          <div class="row content submit" >
-            <div class="col-xs-4">
-              <button type="button" class="btn btn-primary" value="submit" id="submit-button">Submit</button>
-              <a href="index.html"><button type="button" class="btn btn-primary" value="cancel" id="cancel-button">Cancel</button></a>
+
+            <div class="row submit">
+              <div class="col-xs-4">
+                <button type="button" class="btn btn-primary" value="submit" id="submit-button">Submit</button>
+                <a href="index.html"><button type="button" class="btn btn-primary" value="cancel" id="cancel-button">Cancel</button></a>
+              </div>
+              <div class="col-xs-8"></div>
             </div>
-            <div class="col-xs-8"></div>
           </div>
         </div>
         <div class="col-md-1"></div>
