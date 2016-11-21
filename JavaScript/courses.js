@@ -39,7 +39,7 @@ function loadCourses() {
     success: function(json){
       user = json.pop();
       courses = json;
-      table = $('#course_table').DataTable( {
+      table = $('.course_table').DataTable( {
         paging: false,
         data: courses,
         columns: [
@@ -88,7 +88,7 @@ function filter(){
 
 function buildTable(data) {
   table.destroy();
-  var tempTable = $('#course_table').DataTable( {
+  var tempTable = $('.course_table').DataTable( {
     paging: false,
     data: data,
     columns: [

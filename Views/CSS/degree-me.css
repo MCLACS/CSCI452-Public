@@ -20,12 +20,11 @@ body{
     background-color: #001C8C;
     color: #F1BC00;
     font-size: 1.3em;
-    position: fixed;
 }
 
 .logo{
-    width: 70%;
-    height: auto;
+    width: 222px;
+    height: 56px;
 }
 
 .login{
@@ -42,7 +41,7 @@ body{
 }
 
 .container{
-    padding-top: 6%;
+    padding-top: 0;
     width: auto;
 }
 
@@ -51,6 +50,14 @@ body{
     padding: 2% 3% 3% 3%;
     background-color: #FFFFFF;
     width: 100%;
+}
+
+.contentTable{
+    margin: 0;
+    padding: 2% 3% 3% 3%;
+    background-color: #FFFFFF;
+    width: 100%;
+    min-width: 700px;
 }
 
 .create{
@@ -70,8 +77,9 @@ body{
 .links{
     background-color: #F1BC00;
     color: #000000;
-    margin: 0;
-    padding-top: 1%
+    margin-left: 2px;
+    padding-top: 1%;
+    padding-left: 2px;
 }
 
 .image{
@@ -87,4 +95,15 @@ body{
     height: 182px;
     width: auto;
     padding-right: 2%
+}
+
+.dropdown {
+  float: right;
+}
+
+#course_table_filter {
+    float: left;
+}
+.course_table{
+    min-width: 667px; 
 }
