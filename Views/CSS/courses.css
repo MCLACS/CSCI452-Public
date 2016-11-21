@@ -24,8 +24,8 @@ body{
 }
 
 .logo{
-    width: 70%;
-    height: auto;
+    width: 222px;
+    height: 56px;
 }
 
 .container{
@@ -44,6 +44,7 @@ body{
     padding: 2% 3% 3% 3%;
     background-color: #FFFFFF;
     width: 100%;
+    min-width: 666px;
 }
 
 .dropdown {

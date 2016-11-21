@@ -16,31 +16,42 @@
     <!--  View JS & CSS -->
     <script type="text/javascript" src="../JavaScript/courses.js"></script>
     <script type="text/javascript" src="../JavaScript/index.js"></script>
-    <link rel="stylesheet" type="text/css" href="CSS/courses.css">
+    <link rel="stylesheet" type="text/css" href="CSS/degree-me.css">
 
   </head>
   <body>
-    <div class="jumbotron">
+     <div class="jumbotron">
       <div class="row">
         <div class="col-md-1"></div>
-        <div class="col-md-2">
-            <a href="index.html"><img alt="Computer Science Logo" class="logo" src="Images/mcla-logo.png"></a> Computer Science
-        </div>
-        <div class="col-md-5"></div>
         <div class="col-md-3">
-          <div class="welcome">
+          <img alt="Computer Science Logo" class="logo" src="Images/mcla-logo.png"> Computer Science
+        </div>
+        <div class="login">
+          <div class="col-md-2">
+            <input type="text" class="form-control loginHide" id="aNumber" placeholder="A-Number" name="aNumber">
+            <span class="loginHide">(e.g. a12345678)</span>
+          </div>
+        <div class="col-md-4">
+          <input type="password" class="form-control loginHide password" id="password" placeholder="Password" name="password">
+          <div class="welcome" hidden>
             Welcome, <span class="name" id="name"></span>
-            <a href="index.html"><button type="button" id="logout-button" class="btn btn-warning welcome" value="logout">Logout</button></a>
+            <button type="button" id="logout-button" class="btn btn-warning welcome" value="logout">Logout</button>
             <button type="button" id="edit-button" class="btn btn-warning welcome" value="edit">Edit</button>
           </div>
         </div>
+
+      </div>
+        <div class="col-md-2">
+          <button type="button" id="login-button" class="btn btn-primary loginHide" value="login">Login</button>
+        </div>
+        <div class="col-md-1"></div>
       </div>
     </div>
       <div class="container">
         <div class="row">
           <div class="col-md-1"></div>
           <div class="col-md-7">
-            <div class= "content">
+            <div class= "contentTable">
               <div class="dropdown">
                 <select id="dropMenu" class="form-control">
                   <option value="All">Select Concentration</option>
@@ -50,7 +61,7 @@
                   <option value="Software Development">Software Development</option>
                 </select>
               </div>
-              <table id="course_table">
+              <table class="course_table">
                <thead>
                  <tr>
                    <th>Course Number</th>

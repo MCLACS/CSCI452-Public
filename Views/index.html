@@ -17,16 +17,18 @@
     <div class="jumbotron">
       <div class="row">
         <div class="col-md-1"></div>
-        <div class="col-md-2">
+        <div class="col-md-3">
           <img alt="Computer Science Logo" class="logo" src="Images/mcla-logo.png"> Computer Science
         </div>
-        <div class="col-md-3"></div>
+        <div class="col-md-1"></div>
         <div class="login">
-          <div class="col-md-2 form-inline">
-            <input type="text" class="form-control loginHide" id="aNumber" placeholder="A Number" name="aNumber">
+          <div class="col-md-3">
+            <input type="text" class="form-control loginHide" id="aNumber" placeholder="A-Number" name="aNumber">
             <span class="loginHide">(e.g. a12345678)</span>
           </div>
-        <div class="col-md-2">
+         <!-- This col is good for the login at 3, but needs to be 4 to look right when logged in. If you want 
+          to take a look at it. I think we could just make the password field shorter, but I'm not that great with html.-->
+        <div class="col-md-3">
           <input type="password" class="form-control loginHide password" id="password" placeholder="Password" name="password">
           <div class="welcome" hidden>
             Welcome, <span class="name" id="name"></span>
@@ -36,10 +38,9 @@
         </div>
 
       </div>
-        <div class="col-md-2">
+        <div class="col-md-1">
           <button type="button" id="login-button" class="btn btn-primary loginHide" value="login">Login</button>
         </div>
-        <div class="col-md-1"></div>
       </div>
     </div>
 
