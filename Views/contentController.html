@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../Utilities/bootstrap-select.min.css">
   <script type="text/javascript" src="../Utilities/bootstrap-select.min.js"></script>
   <script type="text/javascript" src="../Utilities/bootstrap.min.js"></script>
-  <script type="text/javascript" src="../JavaScript/createAccount.js"></script>
+  <script type="text/javascript" src="../JavaScript/contentController.js"></script>
   <link rel="stylesheet" type="text/css" href="CSS/degree-me.css"/>
 </head>
 <body>
@@ -33,38 +33,79 @@
           <div class="content">
             <h2 id="content-controller-heading" class="heading">Content Controller</h2>
             <div class="row content-option">
-            	<select class="selectpicker" title="Select Action">
+            	<select id="action" class="selectpicker" title="Select Action">
             		<option>Add</option>
             		<option>Edit</option>
             		<option>Delete</option>
             	</select>
-            	<select class="selectpicker" title="Select Type">
+            	<select id="type" class="selectpicker" title="Select Type">
             		<option>Concentration</option>
             		<option>Course</option>
             		<option>Prerequisite</option>
             	</select>
             </div>
-          	<div class="row concentration content-option" hidden>
+          	<div id="add-concentration" class="row concentration content-option" hidden>
           		<label>Concentration Name</label>
-          		<input placeholder="Concentration" type="text" name="" id=""></input>
+          		<input placeholder="Concentration" type="text"></input>
           	</div>
-          	<div class="row course content-option" hidden>
+            <div id="edit-concentration" class="row concentration content-option" hidden>
+          		<label>Concentration Name</label>
+              <select class="selectpicker" title="Select Concentration">
+          		<input placeholder="Concentration" type="text"></input>
+          	</div>
+            <div id="delete-concentration" class="row concentration content-option" hidden>
+          		<label>Concentration Name</label>
+          		<select class="selectpicker" title="Select Concentration"></select>
+          	</div>
+            <div id="add-course" class="row course content-option" hidden>
+              <label>Course Name</label>
+              <input placeholder="Name" type="text"></input>
+              <label>Course Number</label>
+              <input placeholder="Number" type="text"></input>
+              <label>Course Credits</label>
+              <input placeholder="Credits" type="text"></input>
+              <label>Course Prerequisites</label>
+
+              <select class="selectpicker" title="Select Prerequisites" multiple></select>
+            </div>
+            <div id="edit-course" class="row course content-option" hidden>
+              <select class="selectpicker" title="Select Course">
           		<label>Course Name</label>
-          		<input placeholder="Name" type="text" name="" id=""></input>
+          		<input placeholder="Name" type="text"></input>
           		<label>Course Number</label>
-          		<input placeholder="Number" type="text" name="" id=""></input>
+          		<input placeholder="Number" type="text"></input>
           		<label>Course Credits</label>
-          		<input placeholder="Credits" type="text" name="" id=""></input>
+          		<input placeholder="Credits" type="text"></input>
           		<label>Course Prerequisites</label>
 
           		<select class="selectpicker" title="Select Prerequisites" multiple></select>
           	</div>
+            <div id="delete-course" class="row course content-option" hidden>
+              <select class="selectpicker" title="Select Course">
+          		<label>Course Name</label>
+          		<input placeholder="Name" type="text" disabled></input>
+          		<label>Course Number</label>
+          		<input placeholder="Number" type="text" disabled></input>
+          		<label>Course Credits</label>
+          		<input placeholder="Credits" type="text" disabled></input>
+          		<label>Course Prerequisites</label>
 
-          	<div class="row prereq content-option" hidden>
-          		<label>Prerequisite Name</label>
-          		<input placeholder="Prerequisite" type="text" name="" id=""></input>
+          		<select class="selectpicker" title="Select Prerequisites" multiple disabled></select>
           	</div>
 
+          	<div id="add-prerequisite" class="row prereq content-option" hidden>
+          		<label>Prerequisite Name</label>
+          		<input placeholder="Prerequisite" type="text"></input>
+          	</div>
+            <div id="edit-prerequisite" class="row prereq content-option" hidden>
+          		<label>Prerequisite Name</label>
+              <select class="selectpicker" title="Select Prerequisite">
+          		<input placeholder="Prerequisite" type="text"></input>
+          	</div>
+            <div id="delete-prerequisite" class="row prereq content-option" hidden>
+          		<label>Prerequisite Name</label>
+          		<select class="selectpicker" title="Select Prerequisite"></select>
+          	</div>
             <div class="row submit">
               <div class="col-xs-4">
                 <button type="button" class="btn btn-primary" value="submit" id="submit-button">Submit</button>
