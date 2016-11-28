@@ -91,6 +91,7 @@ INSERT INTO concentrations VALUES (NULL, 'Software Development');
 INSERT INTO concentrations VALUES (NULL, 'Business Information Systems');
 INSERT INTO concentrations VALUES (NULL, 'Bioinformatics');
 INSERT INTO concentrations VALUES (NULL, 'Information Technology');
+INSERT INTO concentrations VALUES (NULL, 'Elective');
 
 INSERT INTO user_conc VALUES (1,1);
 INSERT INTO user_conc VALUES (2, 1);
