@@ -1,5 +1,4 @@
 function login() {
-  console.log("login()");
   $.ajax({
     url: '/CSCI452-Public/PHP/login.php?cmd=login',
     type: 'GET',
@@ -14,6 +13,7 @@ function login() {
         $('.loginHide').hide();
         $('#edit-button').show();
         $('#create-button').hide();
+        $('#csCourses').show();
       }
       else {
         $('#password').val("");
@@ -23,7 +23,6 @@ function login() {
       alert(request.responseText);
     }
   });
-
 }
 
 function logout() {
@@ -40,16 +39,15 @@ function logout() {
       $('#password').val("");
       $('#edit-account').hide();
       $('#create-button').show();
+      $('#csCourses').hide();
     },
     error:  function(request, status, error) {
       alert(request.responseText);
     }
   });
-
 }
 
 function checkLogin() {
-
   $.ajax({
     url: '/CSCI452-Public/PHP/login.php?cmd=checkLogin',
     type: 'GET',
@@ -61,13 +59,13 @@ function checkLogin() {
         $('.welcome').show();
         $('.loginHide').hide();
         $('#create-button').hide();
+        $('#csCourses').show();
       }
     },
     error:  function(request, status, error) {
 			alert(request.responseText);
     }
   });
-
 }
 
 function edit(){
@@ -79,6 +77,7 @@ function init() {
   $('#login-button').click(login);
   $('#logout-button').click(logout);
   $('#edit-button').click(edit);
-};
+  $('#csCourses').hide();
+}
 
 $(document).ready(init);

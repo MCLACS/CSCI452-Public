@@ -17,7 +17,7 @@ CREATE TABLE users
 	l_name varchar(25) NOT NULL,
 	email varchar(50) NOT NULL UNIQUE,
 	password varchar(500) NOT NULL,
-	role_id int,
+	role_id int NOT NULL DEFAULT 0,
 	FOREIGN KEY (role_id) REFERENCES roles(role_id)
 );
 
@@ -82,10 +82,11 @@ DESC users;
 
 INSERT INTO roles VALUES(NULL, 'Admin');
 
+-- admin and user password = password
 INSERT INTO users(a_number, f_name, l_name, email, password, role_id)
-VALUES('A30048792', 'Maximillian', 'May', 'mm8792@mcla.edu', 'password', 1);
+VALUES('admin', 'Test', 'Admin', 'test@admin.com', '$2a$09$kfu783hf76hbdl9jw7yh4eTAiNeDzaJcgwtJ/K94Yp6xRQrP4wtsq', 1);
 INSERT INTO users(a_number, f_name, l_name, email, password, role_id)
-VALUES('A20016137', 'Eric', 'Rogers', 'er6137@mcla.edu', 'password', 1);
+VALUES('user', 'Test', 'user', 'test@user.com', '$2a$09$kfu783hf76hbdl9jw7yh4eTAiNeDzaJcgwtJ/K94Yp6xRQrP4wtsq', 0);
 
 INSERT INTO concentrations VALUES (NULL, 'Software Development');
 INSERT INTO concentrations VALUES (NULL, 'Business Information Systems');
