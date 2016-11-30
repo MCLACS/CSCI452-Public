@@ -17,7 +17,7 @@ CREATE TABLE users
 	l_name varchar(25) NOT NULL,
 	email varchar(50) NOT NULL UNIQUE,
 	password varchar(500) NOT NULL,
-	role_id int NOT NULL DEFAULT 0,
+	role_id int NOT NULL DEFAULT 2,
 	FOREIGN KEY (role_id) REFERENCES roles(role_id)
 );
 
@@ -81,6 +81,7 @@ CREATE TABLE prereq_bridge
 DESC users;
 
 INSERT INTO roles VALUES(NULL, 'Admin');
+INSERT INTO roles VALUES(NULL, 'Student');
 
 -- admin and user password = password
 INSERT INTO users(a_number, f_name, l_name, email, password, role_id)
