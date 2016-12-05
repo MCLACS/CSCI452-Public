@@ -66,8 +66,8 @@ function loadCourses() {
       console.log("ajax request failed..");
     }
   });
-
 }
+
 function filter(){
   var val=$("#dropMenu").val();
   if(val == "All") {
@@ -77,8 +77,9 @@ function filter(){
     var filteredCourses = new Array();
     for(var i = 0; i < courses.length; i++)
     {
-      if(courses[i].concentration.includes(val))
+      if(courses[i].concentration == val)
       {
+        console.log(courses[i]);
         filteredCourses.push(courses[i]);
       }
     }
@@ -95,8 +96,19 @@ function buildTable(data) {
     { data: 'course_number'},
     { data: 'course_name' },
     { data: 'prerequisite' },
-    { data: 'concentration' }
-    ],
+    { data: 'concentration' },
+    { data: 'taken',
+      render: function(data, type, row)
+      {
+        if(type == 'display')
+          console.log(row);
+          if(row.taken == 1)
+            return '<input type="checkbox" class="courseCheckbox" checked>';
+          else
+            return '<input type="checkbox" class="courseCheckbox">';
+        return row;
+      }
+    }],
   });
   table = tempTable;
 }
