@@ -11,6 +11,10 @@ body{
     width: 100%;
 }
 
+.noresize{
+    width: auto !important;
+}
+
 /*HEADER*/
 .jumbotron{
     z-index: 5;
