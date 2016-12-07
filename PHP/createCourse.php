@@ -21,15 +21,13 @@
     $course_name = mysqli_real_escape_string($mysqli,getValue(/*'COURSE NAME ID'*/));
     $course_number = mysqli_real_escape_string($mysqli,getValue(/*'COURSE NUMBER ID'*/));
     $conc_id = mysqli_real_escape_string($mysqli,getValue(/*'CONCENTRATION ID'*/));
-    $prereq_id = mysqli_real_escape_string($mysqli,getValue(/*'PREREQ ID'*/));
+    $prereq_map = mysqli_real_escape_string($mysqli,getValue(/*'PREREQ map'*/));
     $course_credits = mysqli_real_escape_string($mysqli, getValue(/*COURSE_CRDITS*/));
     
     if($cmd == "addCourse")
-      $response = addCourse($course_name, $course_number, $conc_id, $prereq_id, $course_credits);
+      $response = addCourse($course_name, $course_number, $conc_id, $prereq_map, $course_credits);
     elseif($cmd == "editCourse")
-      $response = editCourse($course_id, $course_name, $course_number, $course_credits, $prereq_id, $conc_id);
-    elseif($cmd == "deleteCourse")
-      $response = deleteCourse($course_id);
+      $response = editCourse($course_id, $course_name, $course_number, $course_credits, $prereq_map, $conc_id);
     
     echo json_encode($response);
   }
@@ -42,22 +40,18 @@
       $response = addConcentration($conc_name);
     elseif($cmd == "editConcentration")
       $response = editConcentration($conc_id, $conc_name);
-    elseif($cmd == "deleteConcentration")
-      $response = deleteConcentration($conc_id);
     
     echo json_encode($response);
   }
   
   elseif (strpos($cmd, 'Prereq') !== false) {
-    $prereq_id = mysqli_real_escape_string($mysqli,getValue(/*'PRREQ ID'*/));
+    $prereq_map = mysqli_real_escape_string($mysqli,getValue(/*'PRREQ ID'*/));
     $prereq_name = mysqli_real_escape_string($mysqli,getValue(/*'PREREQ'*/));
     
     if($cmd == "addPrereq")
       $response = addPrereq($prereq_name);
     elseif($cmd == "editPrereq")
-      $response = editPrereq($prereq_id, $prereq_name);
-    elseif($cmd == "deletePrereq")
-      $response = deletePrereq($prereq_id);
+      $response = editPrereq($prereq_map, $prereq_name);
     
     echo json_encode($response);
   }  

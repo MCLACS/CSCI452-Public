@@ -52,22 +52,34 @@ function sanitize($t)
 	return $output;
 }
 
-  function addCourse($course_name, $course_number, $conc_id, $prereq_id, $course_credits)
+  function addCourse($course_name, $course_number, $conc_id, $prereq_map, $course_credits)
   {
       global $mysqli;
       $response = array();
-      $query = "INSERT INTO courses (course_name, course_number) VALUES (NULL, ?, ?, ?)";
+      $query = "INSERT INTO courses VALUES (NULL, ?, ?, ?)";
       $stmt = $mysqli->stmt_init();
       $stmt->prepare($query) or die(mysqli_error($mysqli));
-      $stmt->bind_param('ssi', $course_name, $course_number);
+      $stmt->bind_param('ssi', $course_name, $course_number, $course_credits);
       $stmt->execute();
       $res = $stmt->get_result();
       $stmt->close();
       
+      if($prereq_map != null){
+        foreach($prereq_map as $prereq_id){
+          $query = "INSERT INTO prereq_bridge VALUES (?, ?)";
+          $stmt = $mysqli->stmt_init();
+          $stmt->prepare($query) or die(mysqli_error($mysqli));
+          $stmt->bind_param('ii', $course_id, $prereq_id);
+          $stmt->execute();
+          $res = $stmt->get_result();
+          $stmt->close();
+        }
+      }
+        
       return true;
   }
   
-  function editCourse($course_id, $course_name, $course_number, $course_credits, $prereq_id, $conc_id)
+  function editCourse($course_id, $course_name, $course_number, $course_credits, $prereq_map, $conc_id)
   {
       global $mysqli;
       $response = array();
@@ -80,13 +92,25 @@ function sanitize($t)
       $res = $stmt->get_result();
       $stmt->close();
       
-      /*
-      delete all from prereq_bridge based on course id
-      
-      foreach(map of prereq ids){
-       SQL(add to prereq bridge)
+      $query = "DELETE FROM prereq_bridge WHERE course_id = ?";
+      $stmt = $mysqli->stmt_init();
+      $stmt->prepare($query) or die(mysqli_error($mysqli));
+      $stmt->bind_param('i', $course_id);
+      $stmt->execute();
+      $res = $stmt->get_result();
+      $stmt->close();     
+  
+      if($prereq_map != null){    
+        foreach($prereq_map as $prereq_id){
+          $query = "INSERT INTO prereq_bridge VALUES (?, ?)";
+          $stmt = $mysqli->stmt_init();
+          $stmt->prepare($query) or die(mysqli_error($mysqli));
+          $stmt->bind_param('ii', $course_id, $prereq_id);
+          $stmt->execute();
+          $res = $stmt->get_result();
+          $stmt->close();
+        }
       }
-      */
       
       $query = "DELETE * FROM course_conc WHERE course_id = ?";
       $stmt = $mysqli->stmt_init();
@@ -104,14 +128,9 @@ function sanitize($t)
       $res = $stmt->get_result();
       $stmt->close();      
       
-  }
-  
-  function deleteCourse($course_id)
-  {
-      /*fuck this*/
+      return true;
   }
 
-  
   function addConcentration($conc_id, $conc_name)
   {
       global $mysqli;
@@ -142,12 +161,6 @@ function sanitize($t)
       return true;       
   }
   
-  function deleteConcentration()
-  {
-      
-  }
-  
-  
   function addPrereq($prereq_name)
   {
       global $mysqli;
@@ -168,15 +181,13 @@ function sanitize($t)
       $query = "UPDATE prereq_text SET prereq_name = ? WHERE prereq_id = ?";
       $stmt = $mysqli->stmt_init();
       $stmt->prepare($query) or die(mysqli_error($mysqli));
-      $stmt->bind_param('si', $prereq_name, $prereq_id);
+      $stmt->bind_param('si', $prereq_name, $prereq_map);
       $stmt->execute();
       $res = $stmt->get_result();
-      $stmt->close();          
+      $stmt->close(); 
+      
+      return true;
   }
   
-  function deletePrereq()
-  {
-      
-  }
 ?>
 
