@@ -5,6 +5,7 @@ var table;
 
 $(document).on('change', ':checkbox', function(){
   var course = $(this).closest('tr')[0];
+  var taken;
   course = course.cells[0];
   if(this.checked)
         taken =  1;
@@ -24,7 +25,7 @@ $(document).on('change', ':checkbox', function(){
       console.log("success");
     },
     error:  function(request, status, error) {
-      alert(request.responseText);
+      console.log(request.responseText);
     }
   });
 })
@@ -77,7 +78,8 @@ function filter(){
     var filteredCourses = new Array();
     for(var i = 0; i < courses.length; i++)
     {
-      if(courses[i].concentration == val)
+      var conc = courses[i].concentration
+      if(conc != null && conc.includes(val))
       {
         console.log(courses[i]);
         filteredCourses.push(courses[i]);
