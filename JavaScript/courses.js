@@ -5,7 +5,7 @@ var table;
 
 $(document).on('change', ':checkbox', function(){
   var course = $(this).closest('tr')[0];
-  var taken;
+  var taken =0;
   course = course.cells[0];
   if(this.checked)
         taken =  1;
@@ -28,7 +28,7 @@ $(document).on('change', ':checkbox', function(){
       console.log(request.responseText);
     }
   });
-})
+});
 
 function loadCourses() {
 
@@ -70,6 +70,7 @@ function loadCourses() {
 }
 
 function filter(){
+  location.reload();
   var val=$("#dropMenu").val();
   if(val == "All") {
     buildTable(courses);
@@ -78,7 +79,7 @@ function filter(){
     var filteredCourses = new Array();
     for(var i = 0; i < courses.length; i++)
     {
-      var conc = courses[i].concentration
+      var conc = courses[i].concentration;
       if(conc != null && conc.includes(val))
       {
         console.log(courses[i]);
@@ -118,6 +119,6 @@ function buildTable(data) {
 function init() {
   loadCourses();
   $("#dropMenu").on('change', filter);
-};
+}
 
 $(document).ready(init);

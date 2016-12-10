@@ -46,7 +46,7 @@
     $userId = $user[0]['user_id'];
 
     $response2 = array();
-    $query2 = "select course_id from user_courses where user_id = ".$userId.";";
+    $query2 = "select course_id from user_courses where user_id = ".$userId." and taken = 1;";
     $res = $mysqli->query($query2) or die(mysqli_error($mysqli));
     while($row = $res->fetch_assoc())
     {
